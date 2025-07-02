@@ -4,103 +4,6 @@ body {
   background-color: #ffe6e1;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-}
-
-.logo {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.cart-icon {
-  cursor: pointer;
-  font-size: 1.5rem;
-}
-
-#cart-count {
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  padding: 0.2rem 0.5rem;
-  font-size: 0.8rem;
-  vertical-align: top;
-}
-
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-}
-
-.hero-text {
-  text-align: center;
-  margin-bottom: 0;
-}
-
-.hero-text h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.hero-text span {
-  font-weight: bold;
-  font-size: 2rem;
-}
-
-.hero button {
-  padding: 0.5rem 1rem;
-  border: none;
-  background-color: #fff;
-  border-radius: 10px;
-  font-weight: bold;
-}
-
-.hero-image img {
-  max-width: 100%;
-  height: auto;
-}
-
-.categorias {
-  display: flex;
-  justify-content: space-around;
-  padding: 1rem;
-}
-
-.cat {
-  text-align: center;
-}
-
-.cat img {
-  width: 50px;
-  height: 50px;
-}
-
-.destacados {
-  padding: 1rem;
-  text-align: center;
-}
-
-.producto {
-  background: white;
-  padding: 1rem;
-  margin: 0.5rem auto;
-  border-radius: 10px;
-  width: 80%;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
-}
-
-.producto img {
-  width: 60px;
-  height: 60px;
-}
-
 .navbar {
   display: flex;
   align-items: center;
@@ -136,10 +39,32 @@ header {
   border-bottom: 2px solid #007BFF;
 }
 
+.user-icons a {
+  margin-left: 1rem;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #444;
+}
 
+.user-icons {
+  display: flex;
+  align-items: center;
+}
 
+.cart-icon {
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+}
 
-
+#cart-count {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  vertical-align: top;
+}
 
 #carrito {
   position: fixed;
@@ -150,63 +75,12 @@ header {
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 1001;
 }
 
 .oculto {
   display: none;
 }
-
-.footer {
-  background-color: #f5f5f5;
-  padding: 2rem;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  color: #333;
-  font-size: 0.9rem;
-  border-top: 1px solid #ddd;
-  margin-top: 3rem;
-}
-
-.footer-section {
-  min-width: 180px;
-  margin-bottom: 1rem;
-}
-
-.footer-section h4 {
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  color: #111;
-}
-
-.footer-section p {
-  margin: 0.3rem 0;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.footer-section p:hover {
-  color: #ff5a5f;
-}
-
-
-#boton-carrito {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background-color: #fbb1b1;
-  border: none;
-  padding: 0.7rem 1rem;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-#carrito button {
-  margin: 0 0.3rem;
-  cursor: pointer;
-}
-
 
 .destacados {
   text-align: center;
@@ -246,7 +120,7 @@ header {
 .categorias {
   display: flex;
   justify-content: center;
-  gap: 4rem;
+  gap: 2rem;
   flex-wrap: wrap;
 }
 
@@ -257,6 +131,7 @@ header {
   width: 160px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
 }
 
 .categoria img {
@@ -266,19 +141,40 @@ header {
   margin-bottom: 0.8rem;
 }
 
-.categoria p {
-  font-size: 1rem;
-  color: #333;
-}
-
 .categoria:hover {
   transform: translateY(-6px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-
-.sobre-nosotros {
+.footer {
+  background-color: #f5f5f5;
   padding: 2rem;
-  text-align: center;
-  background-color: #fff5f8;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  color: #333;
+  font-size: 0.9rem;
+  border-top: 1px solid #ddd;
+  margin-top: 3rem;
+}
+
+.footer-section {
+  min-width: 180px;
+  margin-bottom: 1rem;
+}
+
+.footer-section h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #111;
+}
+
+.footer-section p {
+  margin: 0.3rem 0;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.footer-section p:hover {
+  color: #ff5a5f;
 }
