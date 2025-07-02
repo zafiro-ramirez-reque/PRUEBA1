@@ -5,53 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Beauty Bliss</title>
   <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
   <header class="navbar">
     <div class="logo">
       <img src="logo.png" alt="Beauty Bliss Logo">
     </div>
-
     <div class="barra-superior">
       <input type="text" id="buscador" placeholder="Buscar productos...">
-
       <div class="iconos">
-        <div class="icono usuario" onclick="toggleVentana('ventana-usuario')">
-          👤
+        <div class="icono" id="icono-usuario">👤
           <div class="ventana-emergente oculto" id="ventana-usuario">
             <div class="tabs">
               <button onclick="mostrarFormulario('registro')">Registrarse</button>
               <button onclick="mostrarFormulario('login')">Iniciar sesión</button>
             </div>
-            <div id="form-registro" class="formulario">
-              <h4>Registro</h4>
+            <div class="formulario" id="formulario-registro">
               <input type="text" placeholder="Nombre">
               <input type="date" placeholder="Fecha de nacimiento">
               <input type="email" placeholder="Correo electrónico">
               <input type="password" placeholder="Contraseña">
               <input type="text" placeholder="Dirección">
-              <button>Registrarme</button>
+              <button>Registrarse</button>
             </div>
-            <div id="form-login" class="formulario oculto">
-              <h4>Iniciar Sesión</h4>
+            <div class="formulario oculto" id="formulario-login">
               <input type="email" placeholder="Correo electrónico">
               <input type="password" placeholder="Contraseña">
-              <button>Ingresar</button>
+              <button>Iniciar sesión</button>
               <div class="social-login">
-                <button>Iniciar con Google</button>
+                <button>Iniciar con Gmail</button>
                 <button>Iniciar con Facebook</button>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="icono carrito" onclick="abrirPasarela()">
-          🛒<span id="cart-count">0</span>
-        </div>
-
-        <div class="icono">
-          ❤ <!-- Corazon, sin funcionalidad por ahora -->
-        </div>
+        <div class="icono" id="icono-favoritos">❤️</div>
+        <div class="icono" id="icono-carrito">🛒<span id="cart-count">0</span></div>
       </div>
     </div>
   </header>
@@ -63,61 +53,65 @@
       <button class="comprar-btn">Comprar ahora</button>
 
       <div class="categorias">
-        <a class="categoria" href="#">
-          <img src="img 1.png" alt="Labios">
-          <p>Labios</p>
-        </a>
-        <a class="categoria" href="#">
-          <img src="rostro.png" alt="Rostro">
+        <a class="categoria" href="#rostro">
+          <img src="rostro.jpg" alt="Rostro">
           <p>Rostro</p>
         </a>
-        <a class="categoria" href="#">
-          <img src="img 2.jpg" alt="Uñas">
+        <a class="categoria" href="#uñas">
+          <img src="uñas.jpg" alt="Uñas">
           <p>Uñas</p>
         </a>
-        <a class="categoria" href="#">
-          <img src="cabello.png" alt="Cabello">
-          <p>Cuidado del Cabello</p>
+        <a class="categoria" href="#labios">
+          <img src="labios.jpg" alt="Labios">
+          <p>Labios</p>
         </a>
       </div>
     </section>
 
     <section class="destacados">
       <h2>Productos Destacados</h2>
-      <div class="grid-productos" id="productos-lista">
+      <div class="grid-productos">
         <div class="producto" data-nombre="Lipstick" data-precio="18">
           <img src="labial.png" alt="Lipstick">
           <p>Lipstick - $18.00</p>
-          <button>Agregar al carrito</button>
+          <button class="btn-agregar">Agregar al carrito</button>
         </div>
         <div class="producto" data-nombre="Colonia" data-precio="23">
           <img src="colonia.png" alt="Colonia">
           <p>Colonia - $23.00</p>
-          <button>Agregar al carrito</button>
+          <button class="btn-agregar">Agregar al carrito</button>
         </div>
         <div class="producto" data-nombre="Crema Hidratante" data-precio="11">
-          <img src="crema hidratante.png" alt="Crema Hidratante">
+          <img src="crema hidratante.png" alt="Crema Humectante">
           <p>Crema Hidratante - $11.00</p>
-          <button>Agregar al carrito</button>
+          <button class="btn-agregar">Agregar al carrito</button>
         </div>
         <div class="producto" data-nombre="Esmalte" data-precio="5">
           <img src="esmalte.png" alt="Esmalte">
           <p>Esmalte - $5.00</p>
-          <button>Agregar al carrito</button>
+          <button class="btn-agregar">Agregar al carrito</button>
+        </div>
+        <div class="producto" data-nombre="Tónico Facial" data-precio="12">
+          <img src="tonico.png" alt="Tónico">
+          <p>Tónico Facial - $12.00</p>
+          <button class="btn-agregar">Agregar al carrito</button>
+        </div>
+        <div class="producto" data-nombre="Perfume Rosas" data-precio="30">
+          <img src="rosas.png" alt="Perfume">
+          <p>Perfume Rosas - $30.00</p>
+          <button class="btn-agregar">Agregar al carrito</button>
         </div>
       </div>
     </section>
   </main>
 
-  <div class="pasarela oculto" id="pasarela">
+  <div class="pasarela oculto" id="pasarela-pago">
     <h3>Pasarela de Pago</h3>
-    <ul id="resumen-pago"></ul>
-    <input type="text" placeholder="Nombre completo">
-    <input type="text" placeholder="Dirección de envío">
+    <input type="text" placeholder="Nombre en la tarjeta">
     <input type="text" placeholder="Número de tarjeta">
-    <input type="text" placeholder="Fecha de vencimiento">
-    <input type="text" placeholder="CVC">
-    <button onclick="confirmarPago()">Pagar ahora</button>
+    <input type="text" placeholder="Fecha de expiración (MM/AA)">
+    <input type="text" placeholder="CVV">
+    <button onclick="finalizarCompra()">Finalizar compra</button>
     <button onclick="cerrarPasarela()">Cancelar</button>
   </div>
 
@@ -141,7 +135,5 @@
       <p>Políticas de Privacidad</p>
     </div>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
