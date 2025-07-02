@@ -23,3 +23,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+// Guardar producto en localStorage
+function agregarAlCarrito(nombre, precio) {
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  const index = carrito.findIndex(item => item.nombre === nombre);
+  if (index !== -1) {
+    carrito[index].cantidad += 1;
+  } else {
+    carrito.push({ nombre, precio, cantidad: 1 });
+  }
+
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  alert(`${nombre} agregado al carrito`);
+}
+
