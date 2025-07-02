@@ -4,117 +4,56 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Beauty Bliss</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
 </head>
 <body>
   <header class="navbar">
     <div class="logo">
       <img src="logo.png" alt="Beauty Bliss Logo">
+      <h1>Beauty Bliss</h1>
     </div>
-    <input type="text" id="barra-busqueda" placeholder="Buscar productos...">
-    <div class="iconos-header">
-      <img src="icono-usuario.png" id="icono-usuario" alt="Usuario" style="width: 30px; cursor: pointer;">
-      <img src="icono-corazon.png" alt="Favoritos" style="width: 30px; cursor: pointer;">
-      <img src="icono-carrito.png" id="boton-carrito" alt="Carrito" style="width: 30px; cursor: pointer;">
-    </div>
-
-    <!-- Menú desplegable de usuario -->
-    <div id="menu-usuario" class="menu-usuario oculto">
-      <ul>
-        <li onclick="location.href='login.html'">Iniciar sesión</li>
-        <li onclick="location.href='registro.html'">Registrarse</li>
-        <li onclick="location.href='pedidos.html'">Mis pedidos</li>
-        <li>Notificaciones</li>
-      </ul>
+    <input type="text" id="search-bar" placeholder="Buscar productos...">
+    <div class="icons">
+      <img src="icono-usuario.png" alt="Usuario">
+      <img src="icono-corazon.png" alt="Favoritos">
+      <img src="icono-carrito.png" alt="Carrito">
     </div>
   </header>
 
-  <div id="carrito" class="carrito-detallado oculto">
-    <h3>Carrito</h3>
-    <ul id="carrito-lista"></ul>
-    <p class="total">Total: $<span id="total">0.00</span></p>
-    <button onclick="window.location.href='pasarela.html'">Finalizar compra</button>
-  </div>
+  <nav class="categorias">
+    <button>Ojos</button>
+    <button>Rostro</button>
+    <button>Cuidado del Cabello</button>
+    <button>Cuidado Facial</button>
+    <button>Uñas</button>
+  </nav>
 
   <main>
     <section class="destacados">
-      <h2>Descubre</h2>
-      <h1>Nuestros Exóticos Productos de Belleza</h1>
-      <button class="comprar-btn">Comprar ahora</button>
-
-      <div class="categorias">
-        <a class="categoria" href="cuidado de la piel.html">
-          <img src="rostro.png" alt="Rostro">
-          <p>Rostro</p>
-        </a>
-        <a class="categoria" href="maquillaje.html">
-          <img src="labios.png" alt="Labios">
-          <p>Labios</p>
-        </a>
-        <a class="categoria" href="uñas.html">
-          <img src="uñas.png" alt="Uñas">
-          <p>Uñas</p>
-        </a>
-      </div>
-    </section>
-
-    <section class="destacados">
       <h2>Productos Destacados</h2>
-      <div class="grid-productos">
-        <div class="producto" data-nombre="Lipstick" data-precio="18">
-          <img src="labial.png" alt="Lipstick">
-          <p>Lipstick - $18.00</p>
-          <button>Agregar al carrito</button>
+      <div class="productos">
+        <div class="producto">
+          <img src="labial.png" alt="Labial">
+          <h3>Labial Rosa</h3>
+          <p>$120</p>
         </div>
-        <div class="producto" data-nombre="Colonia" data-precio="23">
-          <img src="colonia.png" alt="Colonia">
-          <p>Colonia - $23.00</p>
-          <button>Agregar al carrito</button>
+        <div class="producto">
+          <img src="crema hidratante.png" alt="Crema">
+          <h3>Crema Hidratante</h3>
+          <p>$180</p>
         </div>
-        <div class="producto" data-nombre="Crema Hidratante" data-precio="11">
-          <img src="crema hidratante.png" alt="Crema Hidratante">
-          <p>Crema Hidratante - $11.00</p>
-          <button>Agregar al carrito</button>
-        </div>
-        <div class="producto" data-nombre="Esmalte" data-precio="5">
+        <div class="producto">
           <img src="esmalte.png" alt="Esmalte">
-          <p>Esmalte - $5.00</p>
-          <button>Agregar al carrito</button>
-        </div>
-        <div class="producto" data-nombre="Tónico Facial" data-precio="12">
-          <img src="tonico.png" alt="Tónico">
-          <p>Tónico Facial - $12.00</p>
-          <button>Agregar al carrito</button>
-        </div>
-        <div class="producto" data-nombre="Perfume Rosas" data-precio="30">
-          <img src="rosas.png" alt="Perfume Rosas">
-          <p>Perfume Rosas - $30.00</p>
-          <button>Agregar al carrito</button>
+          <h3>Esmalte Coral</h3>
+          <p>$90</p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-section">
-      <h4>Sobre Beauty Bliss</h4>
-      <p>Salud y Cuidado</p>
-      <p>Sustentabilidad</p>
-      <p>Nuestro Compromiso</p>
-    </div>
-    <div class="footer-section">
-      <h4>AYUDA</h4>
-      <p>Encuentra Beauty Bliss</p>
-      <p>Ayuda y Contacto</p>
-      <p>Libro de Reclamaciones</p>
-    </div>
-    <div class="footer-section">
-      <h4>SOPORTE</h4>
-      <p>Términos y Condiciones</p>
-      <p>Políticas de Cookies</p>
-      <p>Políticas de Privacidad</p>
-    </div>
+  <footer>
+    <p>&copy; 2025 Beauty Bliss. Todos los derechos reservados.</p>
   </footer>
 </body>
 </html>
