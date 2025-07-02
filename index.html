@@ -11,8 +11,19 @@
       height: 60px;
     }
     .icons a {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       margin: 0 0.5rem;
+      transition: transform 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+    .icons a:hover {
+      transform: scale(1.2);
+    }
+    .icons a.favorito {
+      color: black;
+    }
+    .icons a.favorito.activo {
+      color: red;
     }
   </style>
 </head>
@@ -24,9 +35,9 @@
     <input type="text" id="search-bar" placeholder="Buscar productos...">
     <div class="icons">
       <a href="login.html" title="Usuario">👤</a>
-      <a href="#" title="Favoritos">❤️</a>
-      <a href="cart.html" title="Carrito">🛒</a>
-      <a href="contacto.html" title="Contacto">📞</a>
+      <a href="#" title="Favoritos" class="favorito" onclick="toggleFavorito(this)">❤️</a>
+      <a href="cart.html" title="Carrito" style="color: #7e57c2;">🛒</a>
+      <a href="contacto.html" title="Contacto" style="color: #4db6ac;">📞</a>
     </div>
   </header>
 
@@ -69,5 +80,10 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    function toggleFavorito(el) {
+      el.classList.toggle("activo");
+    }
+  </script>
 </body>
 </html>
