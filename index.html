@@ -1,33 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Beauty Bliss</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    .logo img {
-      height: 55px;
-    }
-    .icons a {
-      font-size: 1.4rem;
-      margin: 0 0.6rem;
-      transition: transform 0.2s;
-      color: black;
-      text-decoration: none;
-    }
-    .icons a:hover {
-      transform: scale(1.2);
-    }
-    .icons a.favorito {
-      color: inherit;
-    }
-    .icons a.favorito.activo i {
-      color: red;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="navbar">
@@ -36,22 +14,43 @@
     </div>
     <input type="text" id="search-bar" placeholder="Buscar productos...">
     <div class="icons">
-      <a href="login.html" title="Usuario"><i class="fas fa-user"></i></a>
-      <a href="#" title="Favoritos" class="favorito" onclick="toggleFavorito(this)"><i class="fas fa-heart"></i></a>
-      <a href="cart.html" title="Carrito"><i class="fas fa-shopping-cart"></i></a>
-      <a href="contacto.html" title="Contacto"><i class="fas fa-phone"></i></a>
+      <a href="login.html" title="Usuario">👤</a>
+      <a href="#" title="Favoritos" class="favorito" onclick="toggleFavorito(this)">❤️</a>
+      <a href="#" title="Carrito">🛒</a>
+      <a href="contacto.html" title="Contacto">📞</a>
     </div>
   </header>
 
-  <nav class="categorias">
-    <button>Ojos</button>
-    <button>Rostro</button>
-    <button>Cuidado del Cabello</button>
-    <button>Cuidado Facial</button>
-    <button>Uñas</button>
-  </nav>
-
   <main>
+    <section class="destacados">
+      <h2>Descubre</h2>
+      <h1>Nuestros Exóticos Productos de Belleza</h1>
+      <button class="comprar-btn">Comprar ahora</button>
+
+      <div class="categorias-visual">
+        <a class="categoria-box" href="cuidado de la piel.html">
+          <img src="skincare.png" alt="Cuidado de la Piel">
+          <p>Cuidado de la Piel</p>
+        </a>
+        <a class="categoria-box" href="rostro.html">
+          <img src="rostro.png" alt="Rostro">
+          <p>Rostro</p>
+        </a>
+        <a class="categoria-box" href="cabello.html">
+          <img src="cabello.png" alt="Cuidado del Cabello">
+          <p>Cuidado del Cabello</p>
+        </a>
+        <a class="categoria-box" href="ojos.html">
+          <img src="img1.png" alt="Ojos">
+          <p>Ojos</p>
+        </a>
+        <a class="categoria-box" href="uñas.html">
+          <img src="img2.png" alt="Uñas">
+          <p>Uñas</p>
+        </a>
+      </div>
+    </section>
+
     <section class="destacados">
       <h2>Productos Destacados</h2>
       <div class="productos">
@@ -59,52 +58,38 @@
           <img src="labial.png" alt="Labial">
           <h3>Labial Rosa</h3>
           <p>$120</p>
-          <button onclick="agregarAlCarrito('Labial Rosa', 120)">Agregar al carrito</button>
+          <button>Agregar al carrito</button>
         </div>
         <div class="producto rostro">
           <img src="crema hidratante.png" alt="Crema">
           <h3>Crema Hidratante</h3>
           <p>$180</p>
-          <button onclick="agregarAlCarrito('Crema Hidratante', 180)">Agregar al carrito</button>
+          <button>Agregar al carrito</button>
         </div>
         <div class="producto uñas">
           <img src="esmalte.png" alt="Esmalte">
           <h3>Esmalte Coral</h3>
           <p>$90</p>
-          <button onclick="agregarAlCarrito('Esmalte Coral', 90)">Agregar al carrito</button>
+          <button>Agregar al carrito</button>
         </div>
       </div>
     </section>
   </main>
 
+  <div id="carrito" class="carrito oculto">
+    <div class="carrito-header">
+      <h3>Tu Carrito</h3>
+      <button id="cerrar-carrito">✖</button>
+    </div>
+    <ul id="carrito-lista"></ul>
+    <p id="total">Total: $0.00</p>
+    <a href="checkout.html" class="finalizar-btn">Finalizar Compra</a>
+  </div>
+
   <footer>
-      <footer class="footer">
-    <div class="footer-section">
-      <h4>Sobre Beauty Bliss</h4>
-      <p>Salud y Cuidado</p>
-      <p>Sustentabilidad</p>
-      <p>Nuestro Compromiso</p>
-    </div>
-    <div class="footer-section">
-      <h4>AYUDA</h4>
-      <p>Encuentra Beauty Bliss</p>
-      <p>Ayuda y Contacto</p>
-      <p>Libro de Reclamaciones</p>
-    </div>
-    <div class="footer-section">
-      <h4>SOPORTE</h4>
-      <p>Términos y Condiciones</p>
-      <p>Políticas de Cookies</p>
-      <p>Políticas de Privacidad</p>
-    </div>
     <p>&copy; 2025 Beauty Bliss. Todos los derechos reservados.</p>
   </footer>
 
   <script src="script.js"></script>
-  <script>
-    function toggleFavorito(el) {
-      el.classList.toggle("activo");
-    }
-  </script>
 </body>
 </html>
