@@ -5,97 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro - Beauty Bliss</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    .form-container {
-      max-width: 400px;
-      margin: 4rem auto;
-      padding: 2rem;
-      background-color: #fff;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      text-align: center;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .form-container h2 {
-      margin-bottom: 1.5rem;
-      color: #c2185b;
-    }
-
-    .form-container input {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-    }
-
-    .form-container button {
-      width: 100%;
-      padding: 0.8rem;
-      background-color: #e91e63;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    .form-container button:hover {
-      background-color: #c2185b;
-    }
-
-    .social-register {
-      margin-top: 1rem;
-    }
-
-    .social-register a {
-      display: block;
-      padding: 0.7rem;
-      border-radius: 8px;
-      margin-top: 0.5rem;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-    }
-
-    .google-btn {
-      background-color: #db4437;
-    }
-
-    .facebook-btn {
-      background-color: #4267B2;
-    }
-  </style>
+  <script src="https://kit.fontawesome.com/84a2db0fea.js" crossorigin="anonymous"></script>
+  <script src="https://connect.facebook.net/en_US/sdk.js"></script>
 </head>
 <body>
-  <div class="form-container">
-    <h2>Crear Cuenta</h2>
-    <form id="registro-form">
-      <input type="text" placeholder="Nombre completo" required>
-      <input type="number" placeholder="Edad" required min="1">
-      <input type="email" placeholder="Correo electrónico" required>
-      <input type="password" placeholder="Contraseña" required>
+  <div class="registro-container">
+    <h2>Crear una cuenta</h2>
+    <form action="registro.php" method="POST">
+      <input type="text" name="nombre" placeholder="Nombre completo" required>
+      <input type="email" name="correo" placeholder="Correo electrónico" required>
+      <input type="password" name="contrasena" placeholder="Contraseña" required>
+      <input type="number" name="edad" placeholder="Edad" min="18" required>
       <button type="submit">Registrarse</button>
     </form>
 
-    <div class="social-register">
-      <p>O regístrate con:</p>
-      <a href="#" class="google-btn">🔴 Google</a>
-      <a href="#" class="facebook-btn">🔵 Facebook</a>
+    <div class="social-login">
+      <button class="facebook-btn" onclick="loginWithFacebook()">Continuar con Facebook</button>
+      <button class="google-btn">Continuar con Google</button>
     </div>
 
-    <p style="text-align: center; margin-top: 10px;">
-      ¿Ya tienes cuenta? <a href="login.html" style="color:#e91e63; text-decoration:none;">Inicia sesión</a>
-    </p>
+    <p>¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></p>
   </div>
 
   <script>
-    document.getElementById("registro-form").addEventListener("submit", function(e) {
-      e.preventDefault();
-      alert("Registro exitoso (simulado)");
-      window.location.href = "login.html";
-    });
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '2401519870230144',
+        cookie: true,
+        xfbml: true,
+        version: 'v19.0'
+      });
+    };
+
+    function loginWithFacebook() {
+      FB.login(function (response) {
+        if (response.authResponse) {
+          FB.api('/me', { fields: 'name,email' }, function (userInfo) {
+            fetch('login_facebook.php', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                nombre: userInfo.name,
+                correo: userInfo.email
+              })
+            })
+            .then(res => res.json())
+            .then(data => {
+              if (data.success) {
+                window.location.href = 'index.html';
+              } else {
+                alert('Error al iniciar sesión con Facebook');
+              }
+            });
+          });
+        }
+      }, { scope: 'email' });
+    }
   </script>
 </body>
 </html>
