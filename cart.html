@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito - Beauty Bliss</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Tu Carrito</h2>
+    <div id="carrito-items">
+      <!-- Productos se llenarán dinámicamente -->
+    </div>
+    <h3>Total: <span id="total">$0</span></h3>
+    <button id="finalizar-compra">Finalizar Compra</button>
+  </div>
+
+  <script>
+    // Simulación de productos en el carrito
+    const carrito = [
+      { nombre: "Labial Rosa", precio: 120, cantidad: 1 },
+      { nombre: "Esmalte Coral", precio: 90, cantidad: 2 }
+    ];
+
+    const contenedor = document.getElementById("carrito-items");
+    const totalSpan = document.getElementById("total");
+
+    function actualizarCarrito() {
+      contenedor.innerHTML = "";
+      let total = 0;
+
+      carrito.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.style.marginBottom = "1rem";
+
+        div.innerHTML = `
+          <strong>${item.nombre}</strong><br>
+          Precio: $${item.precio} &nbsp;
+          <button onclick="cambiarCantidad(${index}, -1)">-</button>
+          ${item.cantidad}
+          <button onclick="cambiarCantidad(${index}, 1)">+</button>
+          <button onclick="eliminarItem(${index})">🗑️</button>
+        `;
+        contenedor.appendChild(div);
+        total += item.precio * item.cantidad;
+      });
+
+      totalSpan.textContent = `$${total}`;
+    }
+
+    function cambiarCantidad(index, cambio) {
+      carrito[index].cantidad += cambio;
+      if (carrito[index].cantidad <= 0) {
+        carrito.splice(index, 1);
+      }
+      actualizarCarrito();
+    }
+
+    function eliminarItem(index) {
+      carrito.splice(index, 1);
+      actualizarCarrito();
+    }
+
+    document.getElementById("finalizar-compra").addEventListener("click", () => {
+      alert("Redirigiendo a la pasarela de pago...");
+      window.location.href = "checkout.html";
+    });
+
+    actualizarCarrito();
+  </script>
+</body>
+</html>
