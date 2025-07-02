@@ -3,18 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro</title>
+  <title>Registro - Beauty Bliss</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="formulario-emergente">
-    <h3>Crear Cuenta</h3>
-    <input type="text" placeholder="Nombre completo">
-    <input type="date" placeholder="Fecha de nacimiento">
-    <input type="email" placeholder="Correo electrónico">
-    <input type="password" placeholder="Contraseña">
-    <input type="text" placeholder="Dirección">
-    <button onclick="alert('¡Registro completado! Verifica tu correo.')">Registrarse</button>
+  <div class="form-container">
+    <h2>Crear Cuenta</h2>
+    <form id="registro-form">
+      <input type="text" placeholder="Nombre completo" required>
+      <input type="email" placeholder="Correo electrónico" required>
+      <input type="password" placeholder="Contraseña" required>
+      <button type="submit">Registrarse</button>
+    </form>
+    <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
   </div>
+
+  <script>
+    document.getElementById("registro-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Registro exitoso (simulado)");
+      window.location.href = "login.html";
+    });
+  </script>
 </body>
 </html>
