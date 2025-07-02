@@ -69,5 +69,3 @@ botonCarrito.addEventListener("click", (e) => {
   e.preventDefault();
   carrito.classList.toggle("oculto");
 });
-
-
