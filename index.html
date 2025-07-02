@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-  <script src="script.js"></script>
 <body>
   <header class="navbar">
     <div class="logo">
@@ -16,9 +15,9 @@
     </div>
     <input type="text" id="search-bar" placeholder="Buscar productos...">
     <div class="icons">
-      <img src="icono-usuario.png" alt="Usuario">
+      <a href="login.html"><img src="icono-usuario.png" alt="Usuario"></a>
       <img src="icono-corazon.png" alt="Favoritos">
-      <img src="icono-carrito.png" alt="Carrito">
+      <a href="cart.html"><img src="icono-carrito.png" alt="Carrito"></a>
     </div>
   </header>
 
@@ -38,16 +37,19 @@
           <img src="labial.png" alt="Labial">
           <h3>Labial Rosa</h3>
           <p>$120</p>
+          <button onclick="agregarAlCarrito('Labial Rosa', 120)">Agregar al carrito</button>
         </div>
         <div class="producto">
           <img src="crema hidratante.png" alt="Crema">
           <h3>Crema Hidratante</h3>
           <p>$180</p>
+          <button onclick="agregarAlCarrito('Crema Hidratante', 180)">Agregar al carrito</button>
         </div>
         <div class="producto">
           <img src="esmalte.png" alt="Esmalte">
           <h3>Esmalte Coral</h3>
           <p>$90</p>
+          <button onclick="agregarAlCarrito('Esmalte Coral', 90)">Agregar al carrito</button>
         </div>
       </div>
     </section>
@@ -56,5 +58,8 @@
   <footer>
     <p>&copy; 2025 Beauty Bliss. Todos los derechos reservados.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
