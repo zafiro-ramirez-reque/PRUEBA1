@@ -15,6 +15,7 @@
       border-radius: 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       text-align: center;
+      font-family: 'Poppins', sans-serif;
     }
 
     .login-container h2 {
@@ -81,7 +82,7 @@
 
   <div class="login-container">
     <h2>Iniciar Sesión</h2>
-    <form>
+    <form id="login-form">
       <input type="email" placeholder="Correo electrónico" required>
       <input type="password" placeholder="Contraseña" required>
       <button type="submit">Ingresar</button>
@@ -98,6 +99,13 @@
     </div>
   </div>
 
+  <script>
+    document.getElementById("login-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Inicio de sesión exitoso (simulado)");
+      window.location.href = "index.html";
+    });
+  </script>
+
 </body>
 </html>
-
