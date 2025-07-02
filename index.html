@@ -12,39 +12,30 @@
     <div class="logo">
       <img src="logo.png" alt="Beauty Bliss Logo">
     </div>
-    <div class="barra-superior">
-      <input type="text" id="buscador" placeholder="Buscar productos...">
-      <div class="iconos">
-        <div class="icono" id="icono-usuario">👤
-          <div class="ventana-emergente oculto" id="ventana-usuario">
-            <div class="tabs">
-              <button onclick="mostrarFormulario('registro')">Registrarse</button>
-              <button onclick="mostrarFormulario('login')">Iniciar sesión</button>
-            </div>
-            <div class="formulario" id="formulario-registro">
-              <input type="text" placeholder="Nombre">
-              <input type="date" placeholder="Fecha de nacimiento">
-              <input type="email" placeholder="Correo electrónico">
-              <input type="password" placeholder="Contraseña">
-              <input type="text" placeholder="Dirección">
-              <button>Registrarse</button>
-            </div>
-            <div class="formulario oculto" id="formulario-login">
-              <input type="email" placeholder="Correo electrónico">
-              <input type="password" placeholder="Contraseña">
-              <button>Iniciar sesión</button>
-              <div class="social-login">
-                <button>Iniciar con Gmail</button>
-                <button>Iniciar con Facebook</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="icono" id="icono-favoritos">❤️</div>
-        <div class="icono" id="icono-carrito">🛒<span id="cart-count">0</span></div>
-      </div>
+    <input type="text" id="barra-busqueda" placeholder="Buscar productos...">
+    <div class="iconos-header">
+      <img src="icono-usuario.png" id="icono-usuario" alt="Usuario" style="width: 30px; cursor: pointer;">
+      <img src="icono-corazon.png" alt="Favoritos" style="width: 30px; cursor: pointer;">
+      <img src="icono-carrito.png" id="boton-carrito" alt="Carrito" style="width: 30px; cursor: pointer;">
+    </div>
+
+    <!-- Menú desplegable de usuario -->
+    <div id="menu-usuario" class="menu-usuario oculto">
+      <ul>
+        <li onclick="location.href='login.html'">Iniciar sesión</li>
+        <li onclick="location.href='registro.html'">Registrarse</li>
+        <li onclick="location.href='pedidos.html'">Mis pedidos</li>
+        <li>Notificaciones</li>
+      </ul>
     </div>
   </header>
+
+  <div id="carrito" class="carrito-detallado oculto">
+    <h3>Carrito</h3>
+    <ul id="carrito-lista"></ul>
+    <p class="total">Total: $<span id="total">0.00</span></p>
+    <button onclick="window.location.href='pasarela.html'">Finalizar compra</button>
+  </div>
 
   <main>
     <section class="destacados">
@@ -53,17 +44,17 @@
       <button class="comprar-btn">Comprar ahora</button>
 
       <div class="categorias">
-        <a class="categoria" href="#rostro">
-          <img src="rostro.jpg" alt="Rostro">
+        <a class="categoria" href="cuidado de la piel.html">
+          <img src="rostro.png" alt="Rostro">
           <p>Rostro</p>
         </a>
-        <a class="categoria" href="#uñas">
-          <img src="uñas.jpg" alt="Uñas">
-          <p>Uñas</p>
-        </a>
-        <a class="categoria" href="#labios">
-          <img src="labios.jpg" alt="Labios">
+        <a class="categoria" href="maquillaje.html">
+          <img src="labios.png" alt="Labios">
           <p>Labios</p>
+        </a>
+        <a class="categoria" href="uñas.html">
+          <img src="uñas.png" alt="Uñas">
+          <p>Uñas</p>
         </a>
       </div>
     </section>
@@ -74,46 +65,36 @@
         <div class="producto" data-nombre="Lipstick" data-precio="18">
           <img src="labial.png" alt="Lipstick">
           <p>Lipstick - $18.00</p>
-          <button class="btn-agregar">Agregar al carrito</button>
+          <button>Agregar al carrito</button>
         </div>
         <div class="producto" data-nombre="Colonia" data-precio="23">
           <img src="colonia.png" alt="Colonia">
           <p>Colonia - $23.00</p>
-          <button class="btn-agregar">Agregar al carrito</button>
+          <button>Agregar al carrito</button>
         </div>
         <div class="producto" data-nombre="Crema Hidratante" data-precio="11">
-          <img src="crema hidratante.png" alt="Crema Humectante">
+          <img src="crema hidratante.png" alt="Crema Hidratante">
           <p>Crema Hidratante - $11.00</p>
-          <button class="btn-agregar">Agregar al carrito</button>
+          <button>Agregar al carrito</button>
         </div>
         <div class="producto" data-nombre="Esmalte" data-precio="5">
           <img src="esmalte.png" alt="Esmalte">
           <p>Esmalte - $5.00</p>
-          <button class="btn-agregar">Agregar al carrito</button>
+          <button>Agregar al carrito</button>
         </div>
         <div class="producto" data-nombre="Tónico Facial" data-precio="12">
           <img src="tonico.png" alt="Tónico">
           <p>Tónico Facial - $12.00</p>
-          <button class="btn-agregar">Agregar al carrito</button>
+          <button>Agregar al carrito</button>
         </div>
         <div class="producto" data-nombre="Perfume Rosas" data-precio="30">
-          <img src="rosas.png" alt="Perfume">
+          <img src="rosas.png" alt="Perfume Rosas">
           <p>Perfume Rosas - $30.00</p>
-          <button class="btn-agregar">Agregar al carrito</button>
+          <button>Agregar al carrito</button>
         </div>
       </div>
     </section>
   </main>
-
-  <div class="pasarela oculto" id="pasarela-pago">
-    <h3>Pasarela de Pago</h3>
-    <input type="text" placeholder="Nombre en la tarjeta">
-    <input type="text" placeholder="Número de tarjeta">
-    <input type="text" placeholder="Fecha de expiración (MM/AA)">
-    <input type="text" placeholder="CVV">
-    <button onclick="finalizarCompra()">Finalizar compra</button>
-    <button onclick="cerrarPasarela()">Cancelar</button>
-  </div>
 
   <footer class="footer">
     <div class="footer-section">
