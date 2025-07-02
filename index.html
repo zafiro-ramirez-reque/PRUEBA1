@@ -1,40 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Beauty Bliss</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="navbar">
     <div class="logo">
       <img src="logo.png" alt="Beauty Bliss Logo">
     </div>
-    <nav class="nav-links">
-      <a href="#">Inicio</a>
-      <a href="Sobre-nosotros.html">Sobre nosotros</a>
-      <a href="maquillaje.html">Maquillaje</a>
-      <a href="cuidado de la piel.html">Cuidado de la piel</a>
-      <a href="fragancias.html">Fragancias</a>
-      <a href="ofertas.html">Ofertas</a>
-      <a href="contacto.html">Contacto</a>
-    </nav>
-    <div class="user-icons">
-      <a href="registro.html">👤 Registrarse</a>
-      <a href="login.html">🔐 Iniciar sesión</a>
-      <a href="pedidos.html">📦 Mis pedidos</a>
-      <a href="notificaciones.html">🔔</a>
-      <div class="cart-icon" onclick="toggleCart()">🛒<span id="cart-count">0</span></div>
+
+    <div class="barra-superior">
+      <input type="text" id="buscador" placeholder="Buscar productos...">
+
+      <div class="iconos">
+        <div class="icono usuario" onclick="toggleVentana('ventana-usuario')">
+          👤
+          <div class="ventana-emergente oculto" id="ventana-usuario">
+            <div class="tabs">
+              <button onclick="mostrarFormulario('registro')">Registrarse</button>
+              <button onclick="mostrarFormulario('login')">Iniciar sesión</button>
+            </div>
+            <div id="form-registro" class="formulario">
+              <h4>Registro</h4>
+              <input type="text" placeholder="Nombre">
+              <input type="date" placeholder="Fecha de nacimiento">
+              <input type="email" placeholder="Correo electrónico">
+              <input type="password" placeholder="Contraseña">
+              <input type="text" placeholder="Dirección">
+              <button>Registrarme</button>
+            </div>
+            <div id="form-login" class="formulario oculto">
+              <h4>Iniciar Sesión</h4>
+              <input type="email" placeholder="Correo electrónico">
+              <input type="password" placeholder="Contraseña">
+              <button>Ingresar</button>
+              <div class="social-login">
+                <button>Iniciar con Google</button>
+                <button>Iniciar con Facebook</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="icono carrito" onclick="abrirPasarela()">
+          🛒<span id="cart-count">0</span>
+        </div>
+
+        <div class="icono">
+          ❤ <!-- Corazon, sin funcionalidad por ahora -->
+        </div>
+      </div>
     </div>
   </header>
-
-  <div id="carrito" class="oculto">
-    <h3>Carrito</h3>
-    <ul id="carrito-lista"></ul>
-    <p>Total: $<span id="total">0.00</span></p>
-    <button id="cerrar-carrito">Cerrar</button>
-  </div>
 
   <main>
     <section class="destacados">
@@ -43,29 +63,63 @@
       <button class="comprar-btn">Comprar ahora</button>
 
       <div class="categorias">
-        <a class="categoria" href="cuidado de la piel.html">
-          <img src="skincare.png" alt="Skincare">
-          <p>Cuidado de la Piel</p>
-        </a>
-        <a class="categoria" href="labios.html">
+        <a class="categoria" href="#">
           <img src="img 1.png" alt="Labios">
           <p>Labios</p>
         </a>
-        <a class="categoria" href="rostro.html">
-          <img src="maquillaje.png" alt="Rostro">
+        <a class="categoria" href="#">
+          <img src="rostro.png" alt="Rostro">
           <p>Rostro</p>
         </a>
-        <a class="categoria" href="uñas.html">
+        <a class="categoria" href="#">
           <img src="img 2.jpg" alt="Uñas">
           <p>Uñas</p>
         </a>
-        <a class="categoria" href="cabello.html">
+        <a class="categoria" href="#">
           <img src="cabello.png" alt="Cabello">
           <p>Cuidado del Cabello</p>
         </a>
       </div>
     </section>
+
+    <section class="destacados">
+      <h2>Productos Destacados</h2>
+      <div class="grid-productos" id="productos-lista">
+        <div class="producto" data-nombre="Lipstick" data-precio="18">
+          <img src="labial.png" alt="Lipstick">
+          <p>Lipstick - $18.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto" data-nombre="Colonia" data-precio="23">
+          <img src="colonia.png" alt="Colonia">
+          <p>Colonia - $23.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto" data-nombre="Crema Hidratante" data-precio="11">
+          <img src="crema hidratante.png" alt="Crema Hidratante">
+          <p>Crema Hidratante - $11.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+        <div class="producto" data-nombre="Esmalte" data-precio="5">
+          <img src="esmalte.png" alt="Esmalte">
+          <p>Esmalte - $5.00</p>
+          <button>Agregar al carrito</button>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <div class="pasarela oculto" id="pasarela">
+    <h3>Pasarela de Pago</h3>
+    <ul id="resumen-pago"></ul>
+    <input type="text" placeholder="Nombre completo">
+    <input type="text" placeholder="Dirección de envío">
+    <input type="text" placeholder="Número de tarjeta">
+    <input type="text" placeholder="Fecha de vencimiento">
+    <input type="text" placeholder="CVC">
+    <button onclick="confirmarPago()">Pagar ahora</button>
+    <button onclick="cerrarPasarela()">Cancelar</button>
+  </div>
 
   <footer class="footer">
     <div class="footer-section">
