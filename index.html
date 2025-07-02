@@ -1,80 +1,106 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Beauty Bliss</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
-  <script src="https://kit.fontawesome.com/your-kit.js" crossorigin="anonymous"></script>
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="logo.png" alt="Beauty Bliss">
-    </div>
+    <img src="logo.png" alt="Beauty Bliss Logo" class="logo">
     <input type="text" placeholder="Buscar productos...">
     <div class="icons">
-      <a href="login.html" title="Usuario"><img src="icons/user-black.png" alt="Usuario"></a>
-      <a href="#" title="Favoritos"><img src="icons/heart-black.png" alt="Favoritos"></a>
-      <a href="#" title="Carrito"><img src="icons/cart-black.png" alt="Carrito"></a>
-      <a href="contacto.html" title="Contacto"><img src="icons/phone-black.png" alt="Contacto"></a>
+      <a href="registro.html" title="Usuario"><i class="fas fa-user"></i></a>
+      <a href="#" title="Favoritos"><i class="fas fa-heart"></i></a>
+      <a href="#" title="Carrito"><i class="fas fa-shopping-cart"></i></a>
+      <a href="contacto.html" title="Contacto"><i class="fas fa-phone"></i></a>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <h3 class="descubre">Descubre</h3>
-      <h1>Nuestros Exóticos Productos de Belleza</h1>
-      <a class="boton-descubre" href="#categorias">Comprar ahora</a>
+    <h3 class="descubre">Descubre</h3>
+    <h1>Nuestros Exóticos Productos de Belleza</h1>
+    <button class="comprar-ahora">Comprar ahora</button>
+
+    <section class="categorias">
+      <a href="cuidado de la piel.html" class="categoria">
+        <img src="skincare.png" alt="Cuidado de la Piel">
+        <p>Cuidado de la Piel</p>
+      </a>
+      <a href="maquillaje.html" class="categoria">
+        <img src="maquillaje.png" alt="Rostro">
+        <p>Rostro</p>
+      </a>
+      <a href="cabello.html" class="categoria">
+        <img src="cabello.png" alt="Cabello">
+        <p>Cabello</p>
+      </a>
+      
+      <a href="uñas.html" class="categoria">
+        <img src="img 2.jpg" alt="Uñas">
+        <p>Uñas</p>
+      </a>
+      <a href="labios.html" class="categoria">
+        <img src="img 1.png" alt="Labios">
+        <p>Labios</p>
+      </a>
+
     </section>
 
-    <section id="categorias" class="categorias">
-      <div class="categoria"><a href="cuidado de la piel.html"><img src="imgs/piel.png" alt="Cuidado de la piel"><p>Cuidado de la Piel</p></a></div>
-      <div class="categoria"><a href="maquillaje.html"><img src="imgs/rostro.png" alt="Maquillaje"><p>Rostro</p></a></div>
-      <div class="categoria"><a href="cabello.html"><img src="imgs/cabello.png" alt="Cabello"><p>Cabello</p></a></div>
-      <div class="categoria"><a href="ojos.html"><img src="imgs/ojos.png" alt="Ojos"><p>Ojos</p></a></div>
-      <div class="categoria"><a href="uñas.html"><img src="imgs/uñas.png" alt="Uñas"><p>Uñas</p></a></div>
-      <div class="categoria"><a href="labios.html"><img src="imgs/labios.png" alt="Labios"><p>Labios</p></a></div>
+    <section class="productos">
+      <div class="producto">
+        <img src="img/labial.jpg" alt="Labial">
+        <h3>Labial Mate</h3>
+        <p>$10.00</p>
+        <button>Añadir al carrito</button>
+      </div>
+      <div class="producto">
+        <img src="img/serum.jpg" alt="Sérum">
+        <h3>Sérum Facial</h3>
+        <p>$25.00</p>
+        <button>Añadir al carrito</button>
+      </div>
+      <div class="producto">
+        <img src="img/shampoo.jpg" alt="Shampoo">
+        <h3>Shampoo Nutritivo</h3>
+        <p>$15.00</p>
+        <button>Añadir al carrito</button>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <div class="footer-columns">
-      <div>
-        <h4>Sobre Beauty Bliss</h4>
-        <ul>
-          <li><a href="sobre-nosotros.html">Encuentra a Beauty Bliss</a></li>
-          <li><a href="compromiso.html">Nuestro compromiso</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Ayuda</h4>
-        <ul>
-          <li><a href="terminos.html">Términos y condiciones</a></li>
-          <li><a href="eliminacion_datos.html">Políticas de cookies</a></li>
-          <li><a href="politicas.html">Políticas de privacidad</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Soporte</h4>
-        <ul>
-          <li><a href="contacto.html">Ayuda y contacto</a></li>
-          <li><a href="reclamaciones.html">Libro de reclamaciones</a></li>
-        </ul>
-      </div>
-    </div>
-    <p class="copyright">© 2025 Beauty Bliss. Todos los derechos reservados.</p>
-  </footer>
-
   <div id="carrito" class="carrito oculto">
-    <button id="cerrar-carrito">Cerrar</button>
-    <h3>Carrito</h3>
+    <h3>Tu carrito</h3>
     <ul id="carrito-lista"></ul>
     <p id="total">Total: $0.00</p>
-    <a href="checkout.html" class="boton-descubre">Finalizar compra</a>
+    <button onclick="window.location.href='checkout.html'">Finalizar Compra</button>
+    <button id="cerrar-carrito">Cerrar</button>
   </div>
 
-  <script src="script.js"></script>
+  <footer>
+    <div class="footer-col">
+      <h4>Sobre Beauty Bliss</h4>
+      <a href="sobre-nosotros.html">Encuentra a Beauty Bliss</a>
+      <a href="compromiso.html">Nuestro compromiso</a>
+    </div>
+    <div class="footer-col">
+      <h4>Ayuda</h4>
+      <a href="terminos.html">Términos y condiciones</a>
+      <a href="eliminacion_datos.html">Políticas de cookies</a>
+      <a href="politicas.html">Políticas de privacidad</a>
+    </div>
+    <div class="footer-col">
+      <h4>Soporte</h4>
+      <a href="contacto.html">Ayuda y contacto</a>
+      <a href="reclamaciones.html">Libro de reclamaciones</a>
+    </div>
+    <div class="copyright">
+      © 2025 Beauty Bliss. Todos los derechos reservados.
+    </div>
+  </footer>
 </body>
 </html>
