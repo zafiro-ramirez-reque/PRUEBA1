@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pago - Beauty Bliss</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Finalizar Compra</h2>
+    <form id="checkout-form">
+      <input type="text" placeholder="Nombre en la tarjeta" required>
+      <input type="text" placeholder="Número de tarjeta" required pattern="\d{16}" title="Debe tener 16 dígitos">
+      <input type="text" placeholder="MM/AA" required pattern="\d{2}/\d{2}" title="Formato MM/AA">
+      <input type="text" placeholder="CVC" required pattern="\d{3}" title="3 dígitos de seguridad">
+      <button type="submit">Pagar</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("checkout-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("¡Pago procesado correctamente! Gracias por tu compra.");
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>
