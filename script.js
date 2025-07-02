@@ -1,40 +1,72 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const searchBar = document.getElementById("search-bar");
-  const productos = document.querySelectorAll(".producto");
+function toggleFavorito(el) {
+  el.classList.toggle("activo");
+}
 
-  // Filtro en vivo desde el buscador
-  if (searchBar) {
-    searchBar.addEventListener("input", (e) => {
-      const query = e.target.value.toLowerCase();
-      productos.forEach((producto) => {
-        const nombre = producto.querySelector("h3").textContent.toLowerCase();
-        producto.style.display = nombre.includes(query) ? "block" : "none";
-      });
-    });
-  }
+const productos = document.querySelectorAll(".producto button");
+const carritoLista = document.getElementById("carrito-lista");
+const totalElemento = document.getElementById("total");
+const carrito = document.getElementById("carrito");
+const cerrarCarrito = document.getElementById("cerrar-carrito");
+const botonCarrito = document.querySelector('.icons a[title="Carrito"]');
 
-  // Lógica básica para botones de categoría (puedes expandirlo si das clases a cada producto)
-  const botonesCategoria = document.querySelectorAll(".categorias button");
-  botonesCategoria.forEach((boton) => {
-    boton.addEventListener("click", () => {
-      const categoria = boton.textContent.toLowerCase();
-      alert(`Filtro por categoría: ${categoria}`);
-      // Aquí podrías filtrar usando clases CSS si las agregas en HTML.
-    });
+let carritoItems = [];
+
+productos.forEach(boton => {
+  boton.addEventListener("click", () => {
+    const producto = boton.closest(".producto");
+    const nombre = producto.querySelector("h3").textContent;
+    const precio = parseFloat(producto.querySelector("p").textContent.replace("$", ""));
+
+    const existente = carritoItems.find(item => item.nombre === nombre);
+    if (existente) {
+      existente.cantidad++;
+    } else {
+      carritoItems.push({ nombre, precio, cantidad: 1 });
+    }
+
+    actualizarCarrito();
+    carrito.classList.remove("oculto");
   });
 });
-// Guardar producto en localStorage
-function agregarAlCarrito(nombre, precio) {
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  const index = carrito.findIndex(item => item.nombre === nombre);
-  if (index !== -1) {
-    carrito[index].cantidad += 1;
-  } else {
-    carrito.push({ nombre, precio, cantidad: 1 });
-  }
+function actualizarCarrito() {
+  carritoLista.innerHTML = "";
 
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-  alert(`${nombre} agregado al carrito`);
+  carritoItems.forEach((item, index) => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      ${item.nombre} - $${item.precio.toFixed(2)} x 
+      <button onclick="cambiarCantidad(${index}, -1)">➖</button>
+      ${item.cantidad}
+      <button onclick="cambiarCantidad(${index}, 1)">➕</button>
+      <button onclick="eliminarItem(${index})">🗑️</button>
+    `;
+    carritoLista.appendChild(li);
+  });
+
+  const total = carritoItems.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+  totalElemento.textContent = `Total: $${total.toFixed(2)}`;
 }
+
+function cambiarCantidad(index, cambio) {
+  carritoItems[index].cantidad += cambio;
+  if (carritoItems[index].cantidad <= 0) {
+    carritoItems.splice(index, 1);
+  }
+  actualizarCarrito();
+}
+
+function eliminarItem(index) {
+  carritoItems.splice(index, 1);
+  actualizarCarrito();
+}
+
+cerrarCarrito.addEventListener("click", () => {
+  carrito.classList.add("oculto");
+});
+
+botonCarrito.addEventListener("click", (e) => {
+  e.preventDefault();
+  carrito.classList.toggle("oculto");
+});
 
