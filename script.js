@@ -1,76 +1,78 @@
-// Variables
+// script.js
+function toggleFavorito(el) {
+  el.classList.toggle("activo");
+}
+
+const productos = document.querySelectorAll(".producto button");
+const carritoLista = document.getElementById("carrito-lista");
+const totalElemento = document.getElementById("total");
 const carrito = document.getElementById("carrito");
 const cerrarCarrito = document.getElementById("cerrar-carrito");
-const iconoCarrito = document.querySelector('a[title="Carrito"]');
-const listaCarrito = document.getElementById("carrito-lista");
-const totalTexto = document.getElementById("total");
+const botonCarrito = document.querySelector('.icons a[title="Carrito"]');
 
-let productosCarrito = [];
+let carritoItems = [];
 
-// Mostrar carrito
-iconoCarrito.addEventListener("click", () => {
-  carrito.style.display = "flex";
+productos.forEach(boton => {
+  boton.addEventListener("click", () => {
+    const producto = boton.closest(".producto");
+    const nombre = producto.querySelector("h3").textContent;
+    const precio = parseFloat(producto.querySelector("p").textContent.replace("$", ""));
+
+    const existente = carritoItems.find(item => item.nombre === nombre);
+    if (existente) {
+      existente.cantidad++;
+    } else {
+      carritoItems.push({ nombre, precio, cantidad: 1 });
+    }
+
+    actualizarCarrito();
+    carrito.classList.remove("oculto");
+  });
 });
 
-// Cerrar carrito
-cerrarCarrito.addEventListener("click", () => {
-  carrito.style.display = "none";
-});
-
-// Simulación de agregar productos
-function agregarProducto(nombre, precio) {
-  const existente = productosCarrito.find(p => p.nombre === nombre);
-  if (existente) {
-    existente.cantidad++;
-  } else {
-    productosCarrito.push({ nombre, precio, cantidad: 1 });
-  }
-  actualizarCarrito();
-}
-
-// Actualizar vista del carrito
 function actualizarCarrito() {
-  listaCarrito.innerHTML = "";
-  let total = 0;
+  carritoLista.innerHTML = "";
 
-  productosCarrito.forEach((producto, index) => {
+  if (carritoItems.length === 0) {
+    carritoLista.innerHTML = "<li>Carrito vacío</li>";
+    totalElemento.textContent = "Total: $0.00";
+    return;
+  }
+
+  carritoItems.forEach((item, index) => {
     const li = document.createElement("li");
-
     li.innerHTML = `
-      ${producto.nombre} - $${(producto.precio * producto.cantidad).toFixed(2)} <br>
-      <button onclick="cambiarCantidad(${index}, -1)">-</button>
-      ${producto.cantidad}
-      <button onclick="cambiarCantidad(${index}, 1)">+</button>
-      <button onclick="eliminarProducto(${index})">Eliminar</button>
+      ${item.nombre} - $${item.precio.toFixed(2)} x 
+      <button onclick="cambiarCantidad(${index}, -1)">➖</button>
+      ${item.cantidad}
+      <button onclick="cambiarCantidad(${index}, 1)">➕</button>
+      <button onclick="eliminarItem(${index})">🗑️</button>
     `;
-
-    listaCarrito.appendChild(li);
-    total += producto.precio * producto.cantidad;
+    carritoLista.appendChild(li);
   });
 
-  totalTexto.textContent = `Total: $${total.toFixed(2)}`;
+  const total = carritoItems.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+  totalElemento.textContent = `Total: $${total.toFixed(2)}`;
 }
 
-// Cambiar cantidad
 function cambiarCantidad(index, cambio) {
-  productosCarrito[index].cantidad += cambio;
-  if (productosCarrito[index].cantidad <= 0) {
-    productosCarrito.splice(index, 1);
+  carritoItems[index].cantidad += cambio;
+  if (carritoItems[index].cantidad <= 0) {
+    carritoItems.splice(index, 1);
   }
   actualizarCarrito();
 }
 
-// Eliminar producto
-function eliminarProducto(index) {
-  productosCarrito.splice(index, 1);
+function eliminarItem(index) {
+  carritoItems.splice(index, 1);
   actualizarCarrito();
 }
 
-// Prueba: agregar producto simulado al hacer clic (puedes borrar esto si tienes un sistema real)
-document.addEventListener("DOMContentLoaded", () => {
-  // Simulación de clic en un producto
-  setTimeout(() => {
-    agregarProducto("Labial Mate", 25.00);
-    agregarProducto("Mascarilla Facial", 18.50);
-  }, 1000); // Se agregan automáticamente después de 1 segundo solo como prueba
+cerrarCarrito.addEventListener("click", () => {
+  carrito.classList.add("oculto");
+});
+
+botonCarrito.addEventListener("click", (e) => {
+  e.preventDefault();
+  carrito.classList.toggle("oculto");
 });
