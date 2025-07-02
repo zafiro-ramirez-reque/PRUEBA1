@@ -2,156 +2,79 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Beauty Bliss</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
-
-  <header class="navbar">
-    <div class="logo">
-      <img src="logo.png" alt="Beauty Bliss">
-    </div>
-    <input type="text" id="search-bar" placeholder="Buscar...">
+  <!-- Header -->
+  <header>
+    <div class="logo">Beauty Bliss</div>
+    <input type="text" placeholder="Buscar productos..." class="busqueda" />
     <div class="icons">
-      <a href="login.html"><i class="fa fa-user"></i></a>
-      <a href="#" class="favorito"><i class="fa fa-heart"></i></a>
-      <a href="#" id="carrito-icono"><i class="fa fa-shopping-cart"></i></a>
-      <a href="contacto.html"><i class="fa fa-envelope"></i></a>
+      <a href="login.html" title="Usuario"><img src="icons/user-black.png" alt="Usuario" /></a>
+      <a href="#" title="Favoritos"><img src="icons/heart-black.png" alt="Favoritos" /></a>
+      <a href="#" title="Carrito"><img src="icons/cart-black.png" alt="Carrito" /></a>
+      <a href="contacto.html" title="Contacto"><img src="icons/contact-black.png" alt="Contacto" /></a>
     </div>
   </header>
 
-  <section class="destacados">
-    <h1>Bienvenida a Beauty Bliss</h1>
-    <h2><span style="color:#e91e63; cursor: pointer;">Descubre</span> lo mejor en belleza</h2>
-  </section>
+  <!-- Contenido principal -->
+  <main>
+    <section class="descubre">
+      <h1>Descubre tu belleza</h1>
+      <a href="#categorias" class="descubre-link">Descubre</a>
+    </section>
 
-  <section class="categorias-visual">
-    <a class="categoria-box" href="uñas.html">
-      <div class="categoria-contenedor">
-        <img src="img/uñas.jpg" alt="Uñas">
-        <p>Uñas</p>
-      </div>
-    </a>
-    <a class="categoria-box" href="labios.html">
-      <div class="categoria-contenedor">
-        <img src="img/labios.jpg" alt="Labios">
-        <p>Labios</p>
-      </div>
-    </a>
-    <a class="categoria-box" href="cabello.html">
-      <div class="categoria-contenedor">
-        <img src="img/cabello.jpg" alt="Cabello">
-        <p>Cabello</p>
-      </div>
-    </a>
-    <a class="categoria-box" href="cuidado de la piel.html">
-      <div class="categoria-contenedor">
-        <img src="img/piel.jpg" alt="Cuidado de la piel">
-        <p>Cuidado de la piel</p>
-      </div>
-    </a>
-    <a class="categoria-box" href="maquillaje.html">
-      <div class="categoria-contenedor">
-        <img src="img/rostro.jpg" alt="Maquillaje">
-        <p>Maquillaje</p>
-      </div>
-    </a>
-  </section>
+    <section id="categorias" class="categorias">
+      <div class="categoria"><a href="uñas.html"><img src="img/uñas.jpg" alt="Uñas" /><span>Uñas</span></a></div>
+      <div class="categoria"><a href="labios.html"><img src="img/labios.jpg" alt="Labios" /><span>Labios</span></a></div>
+      <div class="categoria"><a href="cabello.html"><img src="img/cabello.jpg" alt="Cabello" /><span>Cabello</span></a></div>
+      <div class="categoria"><a href="cuidado de la piel.html"><img src="img/piel.jpg" alt="Cuidado de la piel" /><span>Cuidado de la piel</span></a></div>
+      <div class="categoria"><a href="maquillaje.html"><img src="img/maquillaje.jpg" alt="Maquillaje" /><span>Maquillaje</span></a></div>
+    </section>
+  </main>
 
-  <section class="productos">
-    <div class="producto">
-      <img src="img/producto1.jpg" alt="Producto 1">
-      <h3>Labial Rosa</h3>
-      <button onclick="agregarAlCarrito('Labial Rosa', 25)">Añadir</button>
-    </div>
-    <!-- Puedes agregar más productos -->
-  </section>
-
-  <div class="carrito oculto" id="carrito">
-    <div class="carrito-header">
+  <!-- Carrito emergente -->
+  <div id="carrito" class="carrito-emergente oculto">
+    <div class="carrito-contenido">
+      <button id="cerrar-carrito" style="float:right; font-size: 1.2rem;">✖</button>
       <h3>Tu Carrito</h3>
-      <button onclick="cerrarCarrito()">✖</button>
+      <ul id="carrito-lista"></ul>
+      <p id="total">Total: S/.0.00</p>
+      <a href="checkout.html"><button id="finalizar-compra">Finalizar Compra</button></a>
     </div>
-    <ul id="carrito-lista"></ul>
-    <p><strong>Total: S/ <span id="carrito-total">0</span></strong></p>
-    <a class="finalizar-btn" href="checkout.html">Finalizar compra</a>
   </div>
 
-  <footer class="footer">
-    <div class="footer-section">
+  <!-- Footer -->
+  <footer>
+    <div class="footer-column">
       <h4>Sobre Beauty Bliss</h4>
-      <p onclick="window.location='sobre-nosotros.html'">Encuentra a Beauty Bliss</p>
-      <p onclick="window.location='compromiso.html'">Nuestro Compromiso</p>
+      <ul>
+        <li><a href="sobre-nosotros.html">Encuentra a Beauty Bliss</a></li>
+        <li><a href="compromiso.html">Nuestro compromiso</a></li>
+      </ul>
     </div>
-    <div class="footer-section">
-      <h4>Ayuda y Soporte</h4>
-      <p onclick="window.location='contacto.html'">Ayuda y Contacto</p>
-      <p onclick="window.location='reclamaciones.html'">Libro de Reclamaciones</p>
+    <div class="footer-column">
+      <h4>Ayuda</h4>
+      <ul>
+        <li><a href="terminos.html">Términos y condiciones</a></li>
+        <li><a href="eliminacion_datos.html">Políticas de cookies</a></li>
+        <li><a href="politicas.html">Políticas de privacidad</a></li>
+      </ul>
     </div>
-    <div class="footer-section">
-      <h4>Legales</h4>
-      <p onclick="window.location='terminos.html'">Términos y Condiciones</p>
-      <p onclick="window.location='eliminacion_datos.html'">Política de Cookies</p>
-      <p onclick="window.location='politicas.html'">Política de Privacidad</p>
+    <div class="footer-column">
+      <h4>Soporte</h4>
+      <ul>
+        <li><a href="contacto.html">Ayuda y contacto</a></li>
+        <li><a href="reclamaciones.html">Libro de reclamaciones</a></li>
+      </ul>
     </div>
-    <div style="width: 100%; text-align: center; margin-top: 1rem;">
-      © 2025 Beauty Bliss. Todos los derechos reservados.
+    <div class="footer-bottom">
+      <p>© 2025 Beauty Bliss. Todos los derechos reservados.</p>
     </div>
   </footer>
-
-  <script>
-    let carrito = [];
-    function agregarAlCarrito(nombre, precio) {
-      const item = carrito.find(p => p.nombre === nombre);
-      if (item) {
-        item.cantidad++;
-      } else {
-        carrito.push({ nombre, precio, cantidad: 1 });
-      }
-      mostrarCarrito();
-    }
-
-    function mostrarCarrito() {
-      document.getElementById("carrito").classList.remove("oculto");
-      const lista = document.getElementById("carrito-lista");
-      lista.innerHTML = "";
-      let total = 0;
-      carrito.forEach((item, index) => {
-        total += item.precio * item.cantidad;
-        lista.innerHTML += `
-          <li>
-            ${item.nombre} - S/ ${item.precio} x ${item.cantidad}
-            <button onclick="cambiarCantidad(${index}, 1)">+</button>
-            <button onclick="cambiarCantidad(${index}, -1)">-</button>
-            <button onclick="eliminarItem(${index})">Eliminar</button>
-          </li>`;
-      });
-      document.getElementById("carrito-total").innerText = total;
-    }
-
-    function cambiarCantidad(index, cambio) {
-      carrito[index].cantidad += cambio;
-      if (carrito[index].cantidad <= 0) {
-        carrito.splice(index, 1);
-      }
-      mostrarCarrito();
-    }
-
-    function eliminarItem(index) {
-      carrito.splice(index, 1);
-      mostrarCarrito();
-    }
-
-    function cerrarCarrito() {
-      document.getElementById("carrito").classList.add("oculto");
-    }
-
-    document.getElementById("carrito-icono").addEventListener("click", function () {
-      const carritoElem = document.getElementById("carrito");
-      carritoElem.classList.toggle("oculto");
-    });
-  </script>
 </body>
 </html>
