@@ -1,28 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Iniciar Sesión - Beauty Bliss</title>
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .login-container {
+      max-width: 400px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .login-container h2 {
+      margin-bottom: 1.5rem;
+      color: #c2185b;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .login-container button:hover {
+      background-color: #c2185b;
+    }
+
+    .social-login {
+      margin-top: 1rem;
+    }
+
+    .social-login a {
+      display: block;
+      padding: 0.7rem;
+      border-radius: 8px;
+      margin-top: 0.5rem;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    .google-btn {
+      background-color: #db4437;
+    }
+
+    .facebook-btn {
+      background-color: #4267B2;
+    }
+
+    .registro-link {
+      margin-top: 1rem;
+    }
+
+    .registro-link a {
+      text-decoration: none;
+      color: #e91e63;
+    }
+  </style>
 </head>
 <body>
-  <div class="form-container">
+
+  <div class="login-container">
     <h2>Iniciar Sesión</h2>
-    <form id="login-form">
+    <form>
       <input type="email" placeholder="Correo electrónico" required>
       <input type="password" placeholder="Contraseña" required>
-      <button type="submit">Entrar</button>
+      <button type="submit">Ingresar</button>
     </form>
-    <p>¿No tienes cuenta? <a href="registro.html">Regístrate</a></p>
+
+    <div class="social-login">
+      <p>O inicia sesión con:</p>
+      <a href="#" class="google-btn">🔴 Google</a>
+      <a href="#" class="facebook-btn">🔵 Facebook</a>
+    </div>
+
+    <div class="registro-link">
+      ¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a>
+    </div>
   </div>
 
-  <script>
-    document.getElementById("login-form").addEventListener("submit", function(e) {
-      e.preventDefault();
-      alert("Inicio de sesión exitoso (simulado)");
-      window.location.href = "index.html";
-    });
-  </script>
 </body>
 </html>
+
