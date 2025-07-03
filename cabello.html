@@ -213,30 +213,30 @@
 </head>
 <body>
   <!-- Header -->
-  <header>
-    <div class="header-container">
-      <div class="header-top">
-        <img src="logo.png" alt="Beauty Bliss Logo" class="logo">
-        <div class="search-bar">
-          <input type="text" placeholder="Buscar productos...">
-        </div>
-        <div class="header-icons">
-          <a href="#" title="Favoritos"><i class="fas fa-heart"></i></a>
-          <a href="#" title="Carrito" id="abrir-carrito"><i class="fas fa-shopping-cart"></i></a>
-        </div>
+<header>
+  <div class="header-container">
+    <div class="header-top">
+      <img src="logo.png" alt="Beauty Bliss Logo" class="logo">
+      <div class="search-bar">
+        <input type="text" id="buscador" placeholder="Buscar productos...">
       </div>
-      <nav class="main-nav">
-        <a href="index.html">Inicio</a>
-        <a href="cuidado de la piel.html">Cuidado Facial</a>
-        <a href="cabello.html">Cabello</a>
-        <a href="Labios.html">Labios</a>
-        <a href="uñas.html">Uñas</a>
-      </nav>
+      <div class="header-icons icons">
+        <a href="#" title="Favoritos"><i class="fas fa-heart"></i></a>
+        <a href="#" title="Carrito" id="abrir-carrito"><i class="fas fa-shopping-cart"></i></a>
+      </div>
     </div>
-  </header>
+    <nav class="main-nav nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="cuidado de la piel.html">Cuidado Facial</a>
+      <a href="cabello.html">Cabello</a>
+      <a href="Labios.html">Labios</a>
+      <a href="uñas.html">Uñas</a>
+    </nav>
+  </div>
+</header>
 
   <!-- Contenido principal -->
-  <main class="contenedor-productos">
+<main class="contenedor-productos">
     <aside class="filtros">
       <h3>Filtros</h3>
       <label>
@@ -259,101 +259,144 @@
         <input type="checkbox" name="precio" value="mayor-20"> Más de S/ 20
       </label>
     </aside>
-
-    <section class="productos">
-      <h1>Cuidado del Cabello</h1>
-      <div class="grid-productos">
-        <div class="producto">
-          <img src="images/cabello/PRO1267.jpg" alt="Shampoo Cabello Ondulado">
-          <h4>Shampoo Cabello Ondulado - TRESemme</h4>
-          <p><span class="precio-original">S/ 25.00</span> <span class="precio-descuento">S/ 21.00</span></p>
-          <button class="agregar-carrito" data-nombre="Shampoo Cabello Ondulado - TRESemme" data-precio="21.00">Agregar al carrito</button>
-        </div>
-
-        <div class="producto">
-          <img src="cabello/PRO3790.jpg" alt="Acondicionador Cabello Ondulado">
-          <h4>Acondicionador Cabello Ondulado - TRESemme</h4>
-          <p><span class="precio-original">S/ 23.90</span> <span class="precio-descuento">S/ 21.90</span></p>
-          <button>Agregar al carrito</button>
-        </div>
-
-        <div class="producto">
-          <img src="cabello/PRO8371.jpg" alt="Shampoo Cabello Liso">
-          <h4>Shampoo Cabello Liso - Pantene PRO-V</h4>
-          <p><span class="precio-original">S/ 20.00</span> </p>
-          <button>Agregar al carrito</button>
-        </div>
-
-        <div class="producto">
-          <img src="cabello/PRO4628.jpg" alt="Acondicionador Cabello Lacio">
-          <h4>Acondicionador Cabello Lacio - Pantene</h4>
-          <p><span class="precio-original">S/ 25.00</span> <span class="precio-descuento">S/ 22.90</span></p>
-          <button>Agregar al carrito</button>
-        </div>
-
-        <div class="producto">
-          <img src="cabello/PRO7183.jpg" alt="Acondicionador Cabello Rizado">
-          <h4>Acondicionador Cabello Rizado - Pantene</h4>
-          <p><span class="precio-original">S/ 25.00</span> <span class="precio-descuento">S/ 22.50</span></p>
-          <button>Agregar al carrito</button>
-        </div>
-
-        <div class="producto">
-          <img src="cabello/PRO3889.jpg" alt="Crema Para Peinar Rizos">
-          <h4>Crema Para Peinar Rizos - Herbal Essences</h4>
-          <p><span class="precio-original">S/ 28.00</span> <span class="precio-descuento">S/ 25</span></p>
-          <button>Agregar al carrito</button>
-        </div>
-
-        <div class="producto">
-          <img src="cabello/PRO8093.jpg" alt="Serum Alisador">
-          <h4>Serum Alisador - Garnier</h4>
-          <p><span class="precio-original">S/ 28.00</span></p>
-          <button>Agregar al carrito</button>
-        </div>
-
-        <div class="producto">
-          <img src="cabello/PRO5112.jpg" alt="Mascarilla Hidratante Rulos">
-          <h4>Mascarilla Hidratante Rulos - Garnier</h4>
-          <p><span class="precio-original">S/ 30.00</span> <span class="precio-descuento">S/ 26.00</span></p>
-          <button>Agregar al carrito</button>
-        </div>
-        
-        <div class="producto">
-          <img src="cabello/PRO9036.jpg" alt="Vinchas">
-          <h4>Vinchas de Colores pasteles - Todo Moda</h4>
-          <p><span class="precio-original">S/ 12.00</span></p>
-          <button>Agregar al carrito</button>
-        </div>
-
-        <div class="producto">
-          <img src="cabello/PRO9042.jpg" alt="Shampoo Cabello Rizo">
-          <h4>Shampoo Cabello Rizo - Pantene</h4>
-          <p><span class="precio-original">S/ 21.00</span></p>
-          <button>Agregar al carrito</button>
-        </div>
-    
-        <div class="producto">
-          <div class="galeria-imagenes">
-            <img src="cabello/PRO2994.jpg" alt="Lazos para el Cabello - Imagen 1">
-            <img src="cabello/PRO2994(1).jpg" alt="Lazos para el Cabello - Imagen 2">
-            <img src="cabello/PRO2994(2).jpg" alt="Lazos para el Cabello - Imagen 3">
-          </div>
-          <h4>Lazos para el Cabello - Todo Moda</h4>
-          <p><span class="precio-original">S/ 11.00</span> <span class="precio-descuento">S/ 11.00</span></p>
-          <button>Agregar al carrito</button>
-        </div>
-
-        <div class="producto">
-          <img src="cabello/PRO1771.jpg" alt="Ganchitos de Colores">
-          <h4>Ganchitos de Colores - Todo Moda</h4>
-          <p><span class="precio-original">S/ 10.00</span> <span class="precio-descuento">S/ 10.00</span></p>
-          <button>Agregar al carrito</button>
-        </div>
+  
+<section class="productos">
+  <h1>Cuidado del Cabello</h1>
+  <div class="grid-productos">
+    <div class="producto" data-marca="TRESemme" data-precio="21">
+      <img src="cabello/PRO1267.jpg" alt="Shampoo Cabello Ondulado">
+      <h4>Shampoo Cabello Ondulado - TRESemme</h4>
+      <p><span class="precio-original">S/ 25.00</span> <span class="precio-descuento">S/ 21.00</span></p>
+      <div class="acciones-producto">
+        <button class="agregar-carrito" data-nombre="Shampoo Cabello Ondulado - TRESemme" data-precio="21.00">Agregar al carrito</button>
+        <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
       </div>
-    </section>
-  </main>
+    </div>
 
+    <div class="producto" data-marca="TRESemme" data-precio="21.90">
+      <img src="cabello/PRO3790.jpg" alt="Acondicionador Cabello Ondulado">
+      <h4>Acondicionador Cabello Ondulado - TRESemme</h4>
+      <p><span class="precio-original">S/ 23.90</span> <span class="precio-descuento">S/ 21.90</span></p>
+      <div class="acciones-producto">
+        <button class="agregar-carrito" data-nombre="Acondicionador Cabello Ondulado - TRESemme" data-precio="21.90">Agregar al carrito</button>
+        <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
+      </div>
+    </div>
+
+    <div class="producto" data-marca="Pantene" data-precio="20">
+      <img src="cabello/PRO8371.jpg" alt="Shampoo Cabello Liso">
+      <h4>Shampoo Cabello Liso - Pantene PRO-V</h4>
+      <p><span class="precio-original">S/ 20.00</span></p>
+      <div class="acciones-producto">
+        <button class="agregar-carrito" data-nombre="Shampoo Cabello Liso - Pantene PRO-V" data-precio="20.00">Agregar al carrito</button>
+        <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
+      </div>
+    </div>
+
+    <div class="producto" data-marca="Pantene" data-precio="22.90">
+      <img src="cabello/PRO4628.jpg" alt="Acondicionador Cabello Lacio">
+      <h4>Acondicionador Cabello Lacio - Pantene</h4>
+      <p><span class="precio-original">S/ 25.00</span> <span class="precio-descuento">S/ 22.90</span></p>
+      <div class="acciones-producto">
+        <button class="agregar-carrito" data-nombre="Acondicionador Cabello Lacio - Pantene" data-precio="22.90">Agregar al carrito</button>
+        <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
+      </div>
+    </div>
+
+    <div class="producto" data-marca="Pantene" data-precio="22.50">
+      <img src="cabello/PRO7183.jpg" alt="Acondicionador Cabello Rizado">
+      <h4>Acondicionador Cabello Rizado - Pantene</h4>
+      <p><span class="precio-original">S/ 25.00</span> <span class="precio-descuento">S/ 22.50</span></p>
+      <div class="acciones-producto">
+        <button class="agregar-carrito" data-nombre="Acondicionador Cabello Rizado - Pantene" data-precio="22.50">Agregar al carrito</button>
+        <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
+      </div>
+    </div>
+
+    <div class="producto" data-marca="Herbal Essences" data-precio="25">
+      <img src="cabello/PRO3889.jpg" alt="Crema Para Peinar Rizos">
+      <h4>Crema Para Peinar Rizos - Herbal Essences</h4>
+      <p><span class="precio-original">S/ 28.00</span> <span class="precio-descuento">S/ 25</span></p>
+      <div class="acciones-producto">
+        <button class="agregar-carrito" data-nombre="Crema Para Peinar Rizos - Herbal Essences" data-precio="25.00">Agregar al carrito</button>
+        <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
+      </div>
+    </div>
+
+    <div class="producto" data-marca="Garnier" data-precio="28">
+      <img src="cabello/PRO8093.jpg" alt="Serum Alisador">
+      <h4>Serum Alisador - Garnier</h4>
+      <p><span class="precio-original">S/ 28.00</span></p>
+      <div class="acciones-producto">
+        <button class="agregar-carrito" data-nombre="Serum Alisador - Garnier" data-precio="28.00">Agregar al carrito</button>
+        <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
+      </div>
+    </div>
+
+    <div class="producto" data-marca="Garnier" data-precio="26">
+      <img src="cabello/PRO5112.jpg" alt="Mascarilla Hidratante Rulos">
+      <h4>Mascarilla Hidratante Rulos - Garnier</h4>
+      <p><span class="precio-original">S/ 30.00</span> <span class="precio-descuento">S/ 26.00</span></p>
+      <div class="acciones-producto">
+        <button class="agregar-carrito" data-nombre="Mascarilla Hidratante Rulos - Garnier" data-precio="26.00">Agregar al carrito</button>
+        <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
+      </div>
+    </div>
+
+    <div class="producto" data-marca="Todo Moda" data-precio="12">
+      <img src="cabello/PRO9036.jpg" alt="Vinchas">
+      <h4>Vinchas de Colores pasteles - Todo Moda</h4>
+      <p><span class="precio-original">S/ 12.00</span></p>
+      <div class="acciones-producto">
+        <button class="agregar-carrito" data-nombre="Vinchas de Colores pasteles - Todo Moda" data-precio="12.00">Agregar al carrito</button>
+        <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
+      </div>
+    </div>
+
+    <div class="producto" data-marca="Pantene" data-precio="21">
+      <img src="cabello/PRO9042.jpg" alt="Shampoo Cabello Rizo">
+      <h4>Shampoo Cabello Rizo - Pantene</h4>
+      <p><span class="precio-original">S/ 21.00</span></p>
+      <div class="acciones-producto">
+        <button class="agregar-carrito" data-nombre="Shampoo Cabello Rizo - Pantene" data-precio="21.00">Agregar al carrito</button>
+        <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
+      </div>
+    </div>
+
+    <div class="producto" data-marca="Todo Moda" data-precio="11">
+      <div class="galeria-imagenes">
+        <img src="cabello/PRO2994.jpg" alt="Lazo 1">
+        <img src="cabello/PRO2994(1).jpg" alt="Lazo 2">
+        <img src="cabello/PRO2994(2).jpg" alt="Lazo 3">
+      </div>
+      <h4>Lazos para el Cabello - Todo Moda</h4>
+      <label for="modelo-lazo">Elige el modelo:</label>
+      <select class="opcion-lazo">
+        <option value="Lazo 1">Modelo 1</option>
+        <option value="Lazo 2">Modelo 2</option>
+        <option value="Lazo 3">Modelo 3</option>
+      </select>
+      <p><span class="precio-original">S/ 11.00</span> <span class="precio-descuento">S/ 11.00</span></p>
+      <div class="acciones-producto">
+        <button class="agregar-carrito" data-nombre="Lazos para el Cabello - Todo Moda" data-precio="11.00">Agregar al carrito</button>
+        <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
+      </div>
+    </div>
+
+    <div class="producto" data-marca="Todo Moda" data-precio="10">
+      <img src="cabello/PRO1771.jpg" alt="Ganchitos de Colores">
+      <h4>Ganchitos de Colores - Todo Moda</h4>
+      <p><span class="precio-original">S/ 10.00</span> <span class="precio-descuento">S/ 10.00</span></p>
+      <div class="acciones-producto">
+        <button class="agregar-carrito" data-nombre="Ganchitos de Colores - Todo Moda" data-precio="10.00">Agregar al carrito</button>
+        <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  
   <div id="carrito" class="carrito oculto">
     <h3>Tu carrito</h3>
     <ul id="carrito-lista"></ul>
@@ -361,6 +404,13 @@
     <button onclick="window.location.href='checkout.html'">Finalizar Compra</button>
     <button id="cerrar-carrito">Cerrar</button>
   </div>
+
+  <div id="favoritos" class="carrito oculto">
+  <h3>Favoritos</h3>
+  <ul id="favoritos-lista"></ul>
+  <button id="cerrar-favoritos">Cerrar</button>
+</div>
+
 
   <!-- Footer -->
   <footer class="footer">
