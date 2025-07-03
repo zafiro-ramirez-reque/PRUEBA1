@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,78 +9,70 @@
 </head>
 <body>
   <header>
-    <img src="img/logo.png" class="logo" />
+    <img src="logo.png" alt="Logo" class="logo" />
     <input type="text" placeholder="Buscar..." />
     <div class="icons">
-      <a href="#" title="Usuario">👤</a>
-      <a href="#" title="Favoritos">❤️</a>
-      <a href="#" title="Carrito">🛒</a>
+      <a href="#" title="Usuario"><i class="fas fa-user"></i></a>
+      <a href="#" title="Favoritos"><i class="fas fa-heart"></i></a>
+      <a href="#" title="Carrito"><i class="fas fa-shopping-cart"></i></a>
+      <a href="#" title="Contacto"><i class="fas fa-envelope"></i></a>
     </div>
   </header>
 
   <main>
-    <h2 class="descubre">Descubre</h2>
+    <p class="descubre">Descubre</p>
     <h1>Productos Destacados</h1>
+
     <div class="productos">
-      <!-- Producto ejemplo -->
+      <!-- Ejemplo de producto (repítelo para tener varios) -->
       <div class="producto">
-        <img src="img/labial.jpg" alt="Labial Rosa">
-        <h3>Labial Rosa</h3>
-        <p>$25.00</p>
+        <img src="producto1.jpg" alt="Producto 1">
+        <h3>Producto 1</h3>
+        <p>$10.00</p>
         <button>Agregar al carrito</button>
       </div>
       <div class="producto">
-        <img src="img/crema.jpg" alt="Crema Facial">
-        <h3>Crema Facial</h3>
-        <p>$30.00</p>
-        <button>Agregar al carrito</button>
-      </div>
-      <div class="producto">
-        <img src="img/sombra.jpg" alt="Sombra de ojos">
-        <h3>Sombra de ojos</h3>
-        <p>$22.00</p>
-        <button>Agregar al carrito</button>
-      </div>
-      <div class="producto">
-        <img src="img/shampoo.jpg" alt="Shampoo Natural">
-        <h3>Shampoo Natural</h3>
-        <p>$18.00</p>
-        <button>Agregar al carrito</button>
-      </div>
-      <div class="producto">
-        <img src="img/esmalte.jpg" alt="Esmalte Rojo">
-        <h3>Esmalte Rojo</h3>
+        <img src="producto2.jpg" alt="Producto 2">
+        <h3>Producto 2</h3>
         <p>$15.00</p>
         <button>Agregar al carrito</button>
       </div>
-      <div class="producto">
-        <img src="img/mascarilla.jpg" alt="Mascarilla Facial">
-        <h3>Mascarilla Facial</h3>
-        <p>$20.00</p>
-        <button>Agregar al carrito</button>
-      </div>
+      <!-- Agrega más productos según necesites -->
     </div>
   </main>
 
   <div id="carrito" class="oculto">
-    <h3>Carrito de Compras</h3>
+    <h3>Carrito</h3>
     <ul id="carrito-lista"></ul>
     <p id="total">Total: $0.00</p>
     <button id="cerrar-carrito">Cerrar</button>
+    <a href="checkout.html"><button>Finalizar compra</button></a>
   </div>
 
   <footer>
     <div class="footer-col">
       <h4>Sobre Beauty Bliss</h4>
-      <a href="sobre-nosotros.html">Quiénes somos</a>
+      <a href="sobre-nosotros.html">Encuentra a Beauty Bliss</a>
+    </div>
+    <div class="footer-col">
+      <h4>Ayuda</h4>
+      <a href="contacto.html">Ayuda y contacto</a>
+      <a href="reclamaciones.html">Libro de reclamaciones</a>
     </div>
     <div class="footer-col">
       <h4>Soporte</h4>
-      <a href="contacto.html">Contacto</a>
+      <a href="terminos.html">Términos y condiciones</a>
+      <a href="eliminacion_datos.html">Políticas de cookies</a>
+      <a href="politicas.html">Políticas de privacidad</a>
+      <a href="compromiso.html">Nuestro compromiso</a>
     </div>
-    <div class="copyright">© 2025 Beauty Bliss. Todos los derechos reservados.</div>
+    <div class="copyright">
+      © 2025 Beauty Bliss. Todos los derechos reservados.
+    </div>
   </footer>
 
   <script src="script.js"></script>
+  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </body>
 </html>
+
