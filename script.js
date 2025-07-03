@@ -2,6 +2,7 @@ function toggleFavorito(el) {
   el.classList.toggle("activo");
 }
 
+const botonesAgregar = document.querySelectorAll(".producto button");
 const carritoLista = document.getElementById("carrito-lista");
 const totalElemento = document.getElementById("total");
 const carrito = document.getElementById("carrito");
@@ -10,13 +11,13 @@ const botonCarrito = document.querySelector('.icons a[title="Carrito"]');
 
 let carritoItems = [];
 
-document.addEventListener("click", (e) => {
-  if (e.target.tagName === "BUTTON" && e.target.textContent.includes("Agregar al carrito")) {
-    const producto = e.target.closest(".producto");
+botonesAgregar.forEach(boton => {
+  boton.addEventListener("click", () => {
+    const producto = boton.closest(".producto");
+    const nombre = producto.dataset.nombre;
+    const precio = parseFloat(producto.dataset.precio);
 
-    const nombre = producto.dataset.nombre || producto.querySelector("p").textContent.split(" - ")[0];
-    const precioTexto = producto.dataset.precio || producto.querySelector("p").textContent.split(" - $")[1];
-    const precio = parseFloat(precioTexto);
+    if (!nombre || isNaN(precio)) return;
 
     const existente = carritoItems.find(item => item.nombre === nombre);
     if (existente) {
@@ -27,7 +28,7 @@ document.addEventListener("click", (e) => {
 
     actualizarCarrito();
     carrito.classList.remove("oculto");
-  }
+  });
 });
 
 function actualizarCarrito() {
