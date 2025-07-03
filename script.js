@@ -1,5 +1,3 @@
-y por ultimo el scrip: 
-// script.js
 function toggleFavorito(el) {
   el.classList.toggle("activo");
 }
