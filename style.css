@@ -87,17 +87,19 @@ h1 {
 
 .productos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(6, 1fr); /* Filas de a 6 */
   gap: 20px;
-  justify-content: center;
+  justify-items: center;
   margin-top: 30px;
+}
+
 }
 
 .producto {
   background: #fff;
   padding: 20px;
   border-radius: 16px;
-  width: 160px;
+  width: 200px;
   text-align: center;
   box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
