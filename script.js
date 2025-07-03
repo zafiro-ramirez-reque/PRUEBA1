@@ -1,4 +1,3 @@
-// script.js
 function toggleFavorito(el) {
   el.classList.toggle("activo");
 }
