@@ -2,91 +2,103 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Beauty Bliss</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://kit.fontawesome.com/a2e0e6a6c1.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+  <!-- Encabezado -->
   <header>
     <div class="logo">Beauty Bliss</div>
-    <input type="text" placeholder="Buscar..." class="busqueda" />
+    <input type="text" class="busqueda" placeholder="Buscar productos...">
     <div class="iconos">
       <i class="fas fa-user"></i>
       <i class="fas fa-heart"></i>
-      <i id="icono-carrito" class="fas fa-shopping-cart"></i>
+      <i class="fas fa-shopping-cart" id="icono-carrito"></i>
       <i class="fas fa-envelope"></i>
     </div>
   </header>
 
-  <section class="destacados">
-    <h2>Productos Destacados</h2>
+  <!-- Categorías -->
+  <section class="categorias">
     <div class="grid-productos">
-      <div class="producto" data-nombre="Lipstick" data-precio="18">
-        <img src="labial.png" alt="Lipstick">
-        <p>Lipstick - $18.00</p>
-        <button>Agregar al carrito</button>
+      <div class="producto">
+        <img src="img1.jpg" alt="Producto 1" />
+        <p class="nombre-producto">Labial Mate</p>
+        <p class="precio-producto">S/ 15.90</p>
+        <button class="agregar-carrito">Agregar al carrito</button>
       </div>
-      <div class="producto" data-nombre="Colonia" data-precio="23">
-        <img src="colonia.png" alt="Colonia">
-        <p>Colonia - $23.00</p>
-        <button>Agregar al carrito</button>
+      <div class="producto">
+        <img src="img2.jpg" alt="Producto 2" />
+        <p class="nombre-producto">Crema Facial</p>
+        <p class="precio-producto">S/ 25.00</p>
+        <button class="agregar-carrito">Agregar al carrito</button>
       </div>
-      <div class="producto" data-nombre="Crema Hidratante" data-precio="11">
-        <img src="crema hidratante.png" alt="Crema Hidratante">
-        <p>Crema Hidratante - $11.00</p>
-        <button>Agregar al carrito</button>
+      <div class="producto">
+        <img src="img3.jpg" alt="Producto 3" />
+        <p class="nombre-producto">Rubor Natural</p>
+        <p class="precio-producto">S/ 18.50</p>
+        <button class="agregar-carrito">Agregar al carrito</button>
       </div>
-      <div class="producto" data-nombre="Esmalte" data-precio="5">
-        <img src="esmalte.png" alt="Esmalte">
-        <p>Esmalte - $5.00</p>
-        <button>Agregar al carrito</button>
+      <div class="producto">
+        <img src="img4.jpg" alt="Producto 4" />
+        <p class="nombre-producto">Esmalte Rosa</p>
+        <p class="precio-producto">S/ 9.90</p>
+        <button class="agregar-carrito">Agregar al carrito</button>
       </div>
-      <div class="producto" data-nombre="Tónico Facial" data-precio="12">
-        <img src="toner.jpg" alt="Tónico">
-        <p>Tónico Facial - $12.00</p>
-        <button>Agregar al carrito</button>
+      <div class="producto">
+        <img src="img5.jpg" alt="Producto 5" />
+        <p class="nombre-producto">Paleta Sombras</p>
+        <p class="precio-producto">S/ 32.90</p>
+        <button class="agregar-carrito">Agregar al carrito</button>
       </div>
-      <div class="producto" data-nombre="Perfume Rosas" data-precio="30">
-        <img src="rosas.jpg" alt="Perfume">
-        <p>Perfume Rosas - $30.00</p>
-        <button>Agregar al carrito</button>
+      <div class="producto">
+        <img src="img6.jpg" alt="Producto 6" />
+        <p class="nombre-producto">Tratamiento Capilar</p>
+        <p class="precio-producto">S/ 21.00</p>
+        <button class="agregar-carrito">Agregar al carrito</button>
       </div>
+      <!-- Puedes duplicar este bloque para añadir más productos -->
     </div>
   </section>
 
-  <div id="carrito" class="carrito-emergente">
+  <!-- Carrito emergente -->
+  <div id="carrito-emergente" class="carrito-emergente">
+    <span id="cerrar-carrito">&times;</span>
     <div class="carrito-contenido">
-      <span id="cerrar-carrito">✖</span>
-      <h2>Carrito</h2>
+      <h2>Carrito de Compras</h2>
       <ul id="carrito-lista"></ul>
-      <p id="total">Total: $0.00</p>
+      <p id="total">Total: S/ 0.00</p>
       <a href="checkout.html" class="boton-finalizar">Finalizar compra</a>
     </div>
   </div>
 
+  <!-- Footer -->
   <footer>
     <div class="footer-columnas">
       <div>
         <h4>Sobre Beauty Bliss</h4>
-        <a href="sobre-nosotros.html">Encuentra a Beauty Bliss</a>
+        <a href="sobre-nosotros.html">Nuestra historia</a>
+        <a href="compromiso.html">Nuestro compromiso</a>
       </div>
       <div>
         <h4>Ayuda</h4>
-        <a href="contacto.html">Ayuda y contacto</a>
-        <a href="reclamaciones.html">Libro de reclamaciones</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="reclamaciones.html">Reclamaciones</a>
       </div>
       <div>
         <h4>Soporte</h4>
         <a href="terminos.html">Términos y condiciones</a>
-        <a href="eliminacion_datos.html">Políticas de cookies</a>
         <a href="politicas.html">Políticas de privacidad</a>
-        <a href="compromiso.html">Nuestro compromiso</a>
+        <a href="eliminacion_datos.html">Política de cookies</a>
       </div>
     </div>
-    <p class="footer-copy">© 2025 Beauty Bliss. Todos los derechos reservados.</p>
+    <div class="footer-copy">© 2025 Beauty Bliss. Todos los derechos reservados.</div>
   </footer>
 
+  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>
