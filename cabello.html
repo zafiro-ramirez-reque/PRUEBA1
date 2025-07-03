@@ -209,33 +209,93 @@
       margin: 0 5px; /* Espaciado entre imágenes */
       border-radius: 5px; /* Bordes redondeados */
     }
+
+      .cabecera {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.logo {
+  height: 50px;
+}
+
+.buscador-header {
+  flex: 1;
+  margin: 0 2rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 1rem;
+}
+
+.icons a {
+  color: #555;
+  font-size: 1.3rem;
+  margin-left: 15px;
+  transition: color 0.3s;
+}
+
+.icons a:hover {
+  color: #e91e63;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 0.5rem 0;
+}
+
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background-color: #e91e63;
+  color: white;
+}
   </style>
 </head>
 <body>
-  <!-- Header -->
-<header>
-  <div class="header-container">
-    <div class="header-top">
-      <img src="logo.png" alt="Beauty Bliss Logo" class="logo">
-      <div class="search-bar">
-        <input type="text" id="buscador" placeholder="Buscar productos...">
-      </div>
-      <div class="header-icons icons">
-        <a href="#" title="Favoritos"><i class="fas fa-heart"></i></a>
-        <a href="#" title="Carrito" id="abrir-carrito"><i class="fas fa-shopping-cart"></i></a>
-      </div>
+
+<header class="cabecera">
+  <div class="header-top">
+    <img src="logo.png" alt="Beauty Bliss Logo" class="logo">
+    <input type="text" id="buscador" class="buscador-header" placeholder="Buscar productos...">
+    <div class="icons">
+      <a href="registro.html" title="Usuario"><i class="fas fa-user"></i></a>
+      <a href="#" title="Favoritos"><i class="fas fa-heart"></i></a>
+      <a href="#" title="Carrito" id="abrir-carrito"><i class="fas fa-shopping-cart"></i></a>
     </div>
-    <nav class="main-nav nav-links">
-      <a href="index.html">Inicio</a>
-      <a href="cuidado de la piel.html">Cuidado Facial</a>
-      <a href="cabello.html">Cabello</a>
-      <a href="Labios.html">Labios</a>
-      <a href="uñas.html">Uñas</a>
-    </nav>
   </div>
+  <nav class="main-nav nav-links">
+    <a href="index.html">Inicio</a>
+    <a href="cuidado de la piel.html">Cuidado Facial</a>
+    <a href="cabello.html">Cabello</a>
+    <a href="Labios.html">Labios</a>
+    <a href="uñas.html">Uñas</a>
+  </nav>
 </header>
 
-  <!-- Contenido principal -->
+
 <main class="contenedor-productos">
     <aside class="filtros">
       <h3>Filtros</h3>
