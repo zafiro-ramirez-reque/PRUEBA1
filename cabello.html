@@ -214,6 +214,7 @@
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   margin-bottom: 1rem;
+  display: block; /* asegura que los bloques estén uno debajo del otro */
 }
 
 .header-top {
@@ -277,6 +278,7 @@
 <body>
 
 <header class="cabecera">
+  <!-- Parte superior: logo, buscador, íconos -->
   <div class="header-top">
     <img src="logo.png" alt="Beauty Bliss Logo" class="logo">
     <input type="text" id="buscador" class="buscador-header" placeholder="Buscar productos...">
@@ -288,6 +290,7 @@
     </div>
   </div>
 
+  <!-- Barra de navegación debajo -->
   <nav class="main-nav">
     <div class="nav-links">
       <a href="index.html">Inicio</a>
