@@ -1,1 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cuidado del Cabello - Beauty Bliss</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .contenedor-productos {
+      display: flex;
+      padding: 2rem;
+    }
 
+    .filtros {
+      width: 200px;
+      margin-right: 2rem;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+
+    .filtros h3 {
+      margin-bottom: 1rem;
+    }
+
+    .filtros label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .productos {
+      flex: 1;
+    }
+
+    .grid-productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .producto {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .producto:hover {
+      transform: scale(1.05);
+    }
+
+    .producto img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    .producto h4 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .precio-original {
+      text-decoration: line-through;
+      color: #888;
+      margin-right: 0.5rem;
+    }
+
+    .precio-descuento {
+      color: #e91e63;
+      font-weight: bold;
+    }
+
+    .producto button {
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .producto button:hover {
+      background-color: #c2185b;
+    }
+
+    .search-bar {
+      flex: 1;
+      margin: 0 20px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .nav-links a {
+      text-decoration: none; /* Eliminar subrayado */
+      color: black; /* Color del texto */
+      margin: 0 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="logo.png" alt="Beauty Bliss Logo">
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Buscar productos...">
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="cabello.html">Cuidado del Cabello</a>
+      <a href="#" class="icons"><img src="icono-carrito.png" alt="Carrito"></a>
+      <a href="#" class="icons"><img src="icono-favoritos.png" alt="Favoritos"></a>
+      <a href="#" class="icons"><img src="icono-busqueda.png" alt="Buscar"></a>
+    </nav>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="contenedor-productos">
+    <aside class="filtros">
+      <h3>Filtros</h3>
+      <label>
+        <input type="checkbox" name="marca" value="TRESemme"> TRESemme
+      </label>
+      <label>
+        <input type="checkbox" name="marca" value="Pantene"> Pantene
+      </label>
+      <label>
+        <input type="checkbox" name="marca" value="Loreal"> Loreal
+      </label>
+      <label>
+        <input type="checkbox" name="marca" value="Herbal Essences"> Herbal Essences
+      </label>
+      <h4>Precio</h4>
+      <label>
+        <input type="checkbox" name="precio" value="menor-20"> Menos de S/ 20
+      </label>
+      <label>
+        <input type="checkbox" name="precio" value="mayor-20"> Más de S/ 20
+      </label>
+    </aside>
+
+    <section class="productos">
+      <h1>Cuidado del Cabello</h1>
+      <div class="grid-productos">
+        <div class="producto">
+          <img src="cabello/PRO1267.jpg" alt="Shampoo Cabello Ondulado">
+          <h4>Shampoo Cabello Ondulado - TRESemme</h4>
+          <p><span class="precio-original">S/ 25.00</span> <span class="precio-descuento">S/ 21.00</span></p>
+          <button>Agregar al carrito</button>
+        </div>
+
+        <div class="producto">
+          <img src="cabello/PRO3790.jpg" alt="Acondicionador Cabello Ondulado">
+          <h4>Acondicionador Cabello Ondulado - TRESemme</h4>
+          <p><span class="precio-original">S/ 23.90</span> <span class="precio-descuento">S/ 21.90</span></p>
+          <button>Agregar al carrito</button>
+        </div>
+
+        <div class="producto">
+          <img src="cabello/PRO8371.webp" alt="Shampoo Cabello Liso">
+          <h4>Shampoo Cabello Liso - Pantene PRO-V</h4>
+          <p><span class="precio-original">S/ 20.00</span> </p>
+          <button>Agregar al carrito</button>
+        </div>
+
+        <div class="producto">
+          <img src="cabello/PRO4628.jpg" alt="Acondicionador Cabello Lacio">
+          <h4>Acondicionador Cabello Lacio - Pantene</h4>
+          <p><span class="precio-original">S/ 25.00</span> <span class="precio-descuento">S/ 22.90</span></p>
+          <button>Agregar al carrito</button>
+        </div>
+
+        <div class="producto">
+          <img src="cabello/PRO7183.webp" alt="Acondicionador Cabello Rizado">
+          <h4>Acondicionador Cabello Rizado - Pantene</h4>
+          <p><span class="precio-original">S/ 25.00</span> <span class="precio-descuento">S/ 22.50</span></p>
+          <button>Agregar al carrito</button>
+        </div>
+
+        <div class="producto">
+          <img src="cabello/PRO3889.webp" alt="Crema Para Peinar Rizos">
+          <h4>Crema Para Peinar Rizos - Herbal Essences</h4>
+          <p><span class="precio-original">S/ 28.00</span> <span class="precio-descuento">S/ 25</span></p>
+          <button>Agregar al carrito</button>
+        </div>
+
+        <div class="producto">
+          <img src="cabello/PRO8093.jpg" alt="Serum Alisador">
+          <h4>Serum Alisador - Garnier</h4>
+          <p><span class="precio-original">S/ 28.00</span></p>
+          <button>Agregar al carrito</button>
+        </div>
+
+        <div class="producto">
+          <img src="cabello/PRO5112.jpg" alt="Mascarilla Hidratante Rulos">
+          <h4>Mascarilla Hidratante Rulos - Garnier</h4>
+          <p><span class="precio-original">S/ 30.00</span> <span class="precio-descuento">S/ 26.00</span></p>
+          <button>Agregar al carrito</button>
+        </div>
+        
+        <div class="producto">
+          <img src="cabello/PRO9036.jpg" alt="Vinchas">
+          <h4>Vinchas de Colores pasteles - Todo Moda</h4>
+          <p><span class="precio-original">S/ 12.00</span></p>
+          <button>Agregar al carrito</button>
+        </div>
+
+        <div class="producto">
+          <img src="cabello/PRO9042.jpg" alt="Shampoo Cabello Rizo">
+          <h4>Shampoo Cabello Rizo - Pantene</h4>
+          <p><span class="precio-original">S/ 21.00</span></p>
+          <button>Agregar al carrito</button>
+        </div>
+    
+    <div class="producto">
+      <div class="galeria-imagenes">
+        <img src="cabello/PRO2994.webp" alt="Lazos para el Cabello - Imagen 1">
+        <img src="cabello/PRO2994(1).webp" alt="Lazos para el Cabello - Imagen 2">
+        <img src="cabello/PRO2994(2).webp" alt="Lazos para el Cabello - Imagen 3">
+      </div>
+      <h4>Lazos para el Cabello - Todo Moda</h4>
+      <p><span class="precio-original">S/ 11.00</span> <span class="precio-descuento">S/ 11.00</span></p>
+      <button>Agregar al carrito</button>
+    </div>
+
+        <div class="producto">
+          <img src="cabello/PRO1771.webp" alt="Ganchitos de Colores">
+          <h4>Ganchitos de Colores - Todo Moda</h4>
+          <p><span class="precio-original">S/ 10.00</span> <span class="precio-descuento">S/ 10.00</span></p>
+          <button>Agregar al carrito</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-section">
+      <h4>Sobre Beauty Bliss</h4>
+      <p>Salud y Cuidado</p>
+      <p>Sustentabilidad</p>
+      <p>Nuestro Compromiso</p>
+    </div>
+    <div class="footer-section">
+      <h4>AYUDA</h4>
+      <p>Encuentra Beauty Bliss</p>
+      <p>Ayuda y Contacto</p>
+      <p>Libro de Reclamaciones</p>
+    </div>
+    <div class="footer-section">
+      <h4>SOPORTE</h4>
+      <p>Términos y Condiciones</p>
+      <p>Políticas de Cookies</p>
+      <p>Políticas de Privacidad</p>
+    </div>
+  </footer>
+</body>
+</html>
