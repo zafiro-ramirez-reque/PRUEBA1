@@ -1,8 +1,5 @@
-function toggleFavorito(el) {
-  el.classList.toggle("activo");
-}
-
-const productos = document.querySelectorAll(".producto button");
+// Carrito funcional mejorado
+const productos = document.querySelectorAll(".producto");
 const carritoLista = document.getElementById("carrito-lista");
 const totalElemento = document.getElementById("total");
 const carrito = document.getElementById("carrito");
@@ -11,11 +8,12 @@ const botonCarrito = document.querySelector('.icons a[title="Carrito"]');
 
 let carritoItems = [];
 
-productos.forEach(boton => {
+// Escuchar clicks en los botones "Agregar al carrito"
+productos.forEach(producto => {
+  const boton = producto.querySelector("button");
   boton.addEventListener("click", () => {
-    const producto = boton.closest(".producto");
-    const nombre = producto.getAttribute("data-nombre");
-    const precio = parseFloat(producto.getAttribute("data-precio"));
+    const nombre = producto.dataset.nombre;
+    const precio = parseFloat(producto.dataset.precio);
 
     const existente = carritoItems.find(item => item.nombre === nombre);
     if (existente) {
@@ -27,6 +25,12 @@ productos.forEach(boton => {
     actualizarCarrito();
     carrito.classList.remove("oculto");
   });
+});
+
+// Botón del carrito para abrir/cerrar
+botonCarrito.addEventListener("click", (e) => {
+  e.preventDefault();
+  carrito.classList.toggle("oculto");
 });
 
 function actualizarCarrito() {
@@ -42,10 +46,10 @@ function actualizarCarrito() {
     const li = document.createElement("li");
     li.innerHTML = `
       ${item.nombre} - $${item.precio.toFixed(2)} x 
-      <button onclick="cambiarCantidad(${index}, -1)">➖</button>
+      <button class="cantidad-btn" onclick="cambiarCantidad(${index}, -1)">-</button>
       ${item.cantidad}
-      <button onclick="cambiarCantidad(${index}, 1)">➕</button>
-      <button onclick="eliminarItem(${index})">🗑️</button>
+      <button class="cantidad-btn" onclick="cambiarCantidad(${index}, 1)">+</button>
+      <button class="eliminar-btn" onclick="eliminarItem(${index})">✕</button>
     `;
     carritoLista.appendChild(li);
   });
@@ -54,19 +58,21 @@ function actualizarCarrito() {
   totalElemento.textContent = `Total: $${total.toFixed(2)}`;
 }
 
-function cambiarCantidad(index, cambio) {
+// Añade estos al global scope para que puedan ser llamados desde los botones del HTML
+window.cambiarCantidad = function(index, cambio) {
   carritoItems[index].cantidad += cambio;
   if (carritoItems[index].cantidad <= 0) {
     carritoItems.splice(index, 1);
   }
   actualizarCarrito();
-}
+};
 
-function eliminarItem(index) {
+window.eliminarItem = function(index) {
   carritoItems.splice(index, 1);
   actualizarCarrito();
-}
+};
 
+// Cerrar carrito al hacer click en el botón
 cerrarCarrito.addEventListener("click", () => {
   carrito.classList.add("oculto");
 });
