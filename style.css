@@ -85,31 +85,24 @@ h1 {
   margin-bottom: 10px;
 }
 
-.productos {
+.grid-productos {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* Filas de a 6 */
+  grid-template-columns: repeat(6, 1fr);
   gap: 20px;
   justify-items: center;
-  margin-top: 30px;
-}
-
+  margin-top: 20px;
 }
 
 .producto {
   background: #fff;
-  padding: 20px;
-  border-radius: 16px;
-  width: 200px;
+  padding: 15px;
+  border-radius: 10px;
+  width: 150px;
   text-align: center;
   box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
 
-.producto img {
-  width: 100px;
-  height: auto;
-  margin-bottom: 10px;
-}
-
+  
 .producto button {
   background-color: #e91e63;
   color: white;
