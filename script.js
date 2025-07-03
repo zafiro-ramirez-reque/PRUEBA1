@@ -1,7 +1,9 @@
+// script.js
 function toggleFavorito(el) {
   el.classList.toggle("activo");
 }
 
+const botonesAgregar = document.querySelectorAll(".producto button");
 const carritoLista = document.getElementById("carrito-lista");
 const totalElemento = document.getElementById("total");
 const carrito = document.getElementById("carrito");
@@ -10,24 +12,21 @@ const botonCarrito = document.querySelector('.icons a[title="Carrito"]');
 
 let carritoItems = [];
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Asignar evento a todos los botones "Agregar al carrito"
-  document.querySelectorAll(".producto button").forEach(boton => {
-    boton.addEventListener("click", () => {
-      const producto = boton.closest(".producto");
-      const nombre = producto.dataset.nombre;
-      const precio = parseFloat(producto.dataset.precio);
+botonesAgregar.forEach(boton => {
+  boton.addEventListener("click", () => {
+    const producto = boton.closest(".producto");
+    const nombre = producto.getAttribute("data-nombre");
+    const precio = parseFloat(producto.getAttribute("data-precio"));
 
-      const existente = carritoItems.find(item => item.nombre === nombre);
-      if (existente) {
-        existente.cantidad++;
-      } else {
-        carritoItems.push({ nombre, precio, cantidad: 1 });
-      }
+    const existente = carritoItems.find(item => item.nombre === nombre);
+    if (existente) {
+      existente.cantidad++;
+    } else {
+      carritoItems.push({ nombre, precio, cantidad: 1 });
+    }
 
-      actualizarCarrito();
-      carrito.classList.remove("oculto");
-    });
+    actualizarCarrito();
+    carrito.classList.remove("oculto");
   });
 });
 
