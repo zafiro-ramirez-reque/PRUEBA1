@@ -14,8 +14,8 @@ let carritoItems = [];
 productos.forEach(boton => {
   boton.addEventListener("click", () => {
     const producto = boton.closest(".producto");
-    const nombre = producto.querySelector("h3").textContent;
-    const precio = parseFloat(producto.querySelector("p").textContent.replace("$", ""));
+    const nombre = producto.getAttribute("data-nombre");
+    const precio = parseFloat(producto.getAttribute("data-precio"));
 
     const existente = carritoItems.find(item => item.nombre === nombre);
     if (existente) {
@@ -69,9 +69,4 @@ function eliminarItem(index) {
 
 cerrarCarrito.addEventListener("click", () => {
   carrito.classList.add("oculto");
-});
-
-botonCarrito.addEventListener("click", (e) => {
-  e.preventDefault();
-  carrito.classList.toggle("oculto");
 });
