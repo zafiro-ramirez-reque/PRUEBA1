@@ -1,50 +1,79 @@
-const carrito = document.getElementById('carrito');
-const carritoLista = document.getElementById('carrito-lista');
-const total = document.getElementById('total');
-const cerrarCarrito = document.getElementById('cerrar-carrito');
-const iconoCarrito = document.getElementById('icono-carrito');
+y por ultimo el scrip: 
+// script.js
+function toggleFavorito(el) {
+  el.classList.toggle("activo");
+}
 
-let productosEnCarrito = [];
+const productos = document.querySelectorAll(".producto button");
+const carritoLista = document.getElementById("carrito-lista");
+const totalElemento = document.getElementById("total");
+const carrito = document.getElementById("carrito");
+const cerrarCarrito = document.getElementById("cerrar-carrito");
+const botonCarrito = document.querySelector('.icons a[title="Carrito"]');
 
-document.querySelectorAll('.agregar-carrito').forEach(boton => {
-  boton.addEventListener('click', (e) => {
-    const producto = e.target.closest('.producto');
-    const nombre = producto.dataset.nombre;
-    const precio = parseFloat(producto.dataset.precio);
-    const existente = productosEnCarrito.find(p => p.nombre === nombre);
+let carritoItems = [];
+
+productos.forEach(boton => {
+  boton.addEventListener("click", () => {
+    const producto = boton.closest(".producto");
+    const nombre = producto.querySelector("h3").textContent;
+    const precio = parseFloat(producto.querySelector("p").textContent.replace("$", ""));
+
+    const existente = carritoItems.find(item => item.nombre === nombre);
     if (existente) {
       existente.cantidad++;
     } else {
-      productosEnCarrito.push({ nombre, precio, cantidad: 1 });
+      carritoItems.push({ nombre, precio, cantidad: 1 });
     }
+
     actualizarCarrito();
+    carrito.classList.remove("oculto");
   });
-});
-
-iconoCarrito.addEventListener('click', () => {
-  carrito.classList.toggle('oculto');
-});
-
-cerrarCarrito.addEventListener('click', () => {
-  carrito.classList.add('oculto');
 });
 
 function actualizarCarrito() {
-  carritoLista.innerHTML = '';
-  let totalCompra = 0;
-  productosEnCarrito.forEach((producto, index) => {
-    const li = document.createElement('li');
+  carritoLista.innerHTML = "";
+
+  if (carritoItems.length === 0) {
+    carritoLista.innerHTML = "<li>Carrito vacío</li>";
+    totalElemento.textContent = "Total: $0.00";
+    return;
+  }
+
+  carritoItems.forEach((item, index) => {
+    const li = document.createElement("li");
     li.innerHTML = `
-      ${producto.nombre} x${producto.cantidad} - $${(producto.precio * producto.cantidad).toFixed(2)}
-      <button onclick="eliminarProducto(${index})">Eliminar</button>
+      ${item.nombre} - $${item.precio.toFixed(2)} x 
+      <button onclick="cambiarCantidad(${index}, -1)">➖</button>
+      ${item.cantidad}
+      <button onclick="cambiarCantidad(${index}, 1)">➕</button>
+      <button onclick="eliminarItem(${index})">🗑️</button>
     `;
     carritoLista.appendChild(li);
-    totalCompra += producto.precio * producto.cantidad;
   });
-  total.textContent = `Total: $${totalCompra.toFixed(2)}`;
+
+  const total = carritoItems.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+  totalElemento.textContent = `Total: $${total.toFixed(2)}`;
 }
 
-function eliminarProducto(index) {
-  productosEnCarrito.splice(index, 1);
+function cambiarCantidad(index, cambio) {
+  carritoItems[index].cantidad += cambio;
+  if (carritoItems[index].cantidad <= 0) {
+    carritoItems.splice(index, 1);
+  }
   actualizarCarrito();
 }
+
+function eliminarItem(index) {
+  carritoItems.splice(index, 1);
+  actualizarCarrito();
+}
+
+cerrarCarrito.addEventListener("click", () => {
+  carrito.classList.add("oculto");
+});
+
+botonCarrito.addEventListener("click", (e) => {
+  e.preventDefault();
+  carrito.classList.toggle("oculto");
+});
