@@ -1,5 +1,3 @@
-/* style.css */
-
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
@@ -86,17 +84,18 @@ h1 {
 }
 
 .productos {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  margin-top: 30px;
 }
 
 .producto {
   background: #fff;
   padding: 20px;
   border-radius: 16px;
-  width: 200px;
+  width: 180px;
   text-align: center;
   box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
