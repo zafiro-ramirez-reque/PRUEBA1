@@ -1,3 +1,4 @@
+// script.js
 function toggleFavorito(el) {
   el.classList.toggle("activo");
 }
@@ -75,3 +76,4 @@ botonCarrito.addEventListener("click", (e) => {
   e.preventDefault();
   carrito.classList.toggle("oculto");
 });
+
