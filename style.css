@@ -93,7 +93,6 @@ h1 {
   margin-bottom: 10px;
 }
 
-/* SECCIÓN PRODUCTOS DESTACADOS MEJORADA */
 .grid-productos {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -122,6 +121,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   transition: transform 0.2s;
+  position: relative;
 }
 
 .producto:hover {
@@ -162,7 +162,30 @@ h1 {
   background-color: #c2185b;
 }
 
-/* CARRITO */
+.acciones-producto {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.agregar-favorito {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #e91e63;
+  transition: transform 0.2s;
+}
+
+.agregar-favorito:hover {
+  transform: scale(1.1);
+}
+
+.agregar-favorito.activo {
+  color: red;
+}
+
 #carrito {
   position: fixed;
   right: 20px;
@@ -223,6 +246,36 @@ h1 {
   background: #ffcdd2;
 }
 
+#favoritos {
+  position: fixed;
+  right: 20px;
+  top: 80px;
+  width: 300px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 15px;
+  z-index: 999;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#favoritos.oculto {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+#favoritos-lista li {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .oculto {
   display: none;
 }
@@ -261,7 +314,6 @@ footer {
   color: #555;
 }
 
-/* RESPONSIVE */
 @media (max-width: 1400px) {
   .grid-productos {
     grid-template-columns: repeat(5, 1fr);
