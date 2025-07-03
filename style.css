@@ -56,6 +56,11 @@ h1 {
   border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.comprar-ahora:hover {
+  background-color: #c2185b;
 }
 
 .categorias {
@@ -75,6 +80,11 @@ h1 {
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
   text-decoration: none;
   color: #333;
+  transition: transform 0.2s;
+}
+
+.categoria:hover {
+  transform: translateY(-5px);
 }
 
 .categoria img {
@@ -83,13 +93,23 @@ h1 {
   margin-bottom: 10px;
 }
 
+/* SECCIÓN PRODUCTOS DESTACADOS MEJORADA */
 .grid-productos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(6, 1fr);
   gap: 20px;
   padding: 20px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+}
+
+.grid-productos::-webkit-scrollbar {
+  height: 5px;
+}
+
+.grid-productos::-webkit-scrollbar-thumb {
+  background: #e91e63;
+  border-radius: 10px;
 }
 
 .producto {
@@ -101,13 +121,30 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: transform 0.2s;
+}
+
+.producto:hover {
+  transform: scale(1.03);
 }
 
 .producto img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 8px;
   margin-bottom: 10px;
+}
+
+.producto p {
+  margin: 5px 0;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 
 .producto button {
@@ -118,8 +155,14 @@ h1 {
   border-radius: 8px;
   cursor: pointer;
   margin-top: auto;
+  transition: background-color 0.3s;
 }
 
+.producto button:hover {
+  background-color: #c2185b;
+}
+
+/* CARRITO (funcionalidades ya corregidas) */
 #carrito {
   position: fixed;
   right: 20px;
@@ -137,6 +180,7 @@ h1 {
   max-height: 300px;
   overflow-y: auto;
   margin: 10px 0;
+  padding-right: 5px;
 }
 
 #carrito-lista li {
@@ -154,11 +198,20 @@ h1 {
   height: 25px;
   border-radius: 50%;
   cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cantidad-btn:hover {
+  background: #e0e0e0;
 }
 
 .eliminar-btn {
   background: #ffebee;
   color: #e91e63;
+}
+
+.eliminar-btn:hover {
+  background: #ffcdd2;
 }
 
 .oculto {
@@ -184,6 +237,7 @@ footer {
   margin-bottom: 6px;
   text-decoration: none;
   color: #333;
+  transition: color 0.2s;
 }
 
 .footer-col a:hover {
@@ -198,18 +252,46 @@ footer {
   color: #555;
 }
 
-@media (max-width: 768px) {
+/* RESPONSIVE */
+@media (max-width: 1400px) {
   .grid-productos {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(5, 1fr);
   }
-  
+}
+
+@media (max-width: 1200px) {
+  .grid-productos {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
   header {
     flex-direction: column;
-    align-items: stretch;
+    gap: 10px;
   }
   
   input[type="text"] {
     margin: 10px 0;
+    width: 100%;
+  }
+  
+  .grid-productos {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
+@media (max-width: 600px) {
+  .grid-productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .categoria {
+    width: 110px;
+    padding: 15px;
+  }
+  
+  .categoria img {
+    width: 60px;
+  }
+}
