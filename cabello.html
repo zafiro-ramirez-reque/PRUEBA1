@@ -91,6 +91,18 @@
       background-color: #c2185b;
     }
 
+    .navbar {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      background-color: #f8f8f8;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .navbar .logo {
+      margin-right: 20px;
+    }
+
     .search-bar {
       flex: 1;
       margin: 0 20px;
@@ -103,42 +115,59 @@
       border-radius: 5px;
     }
 
+    .nav-links {
+      display: flex;
+      gap: 15px;
+    }
+
     .nav-links a {
       text-decoration: none; /* Eliminar subrayado */
       color: black; /* Color del texto */
-      margin: 0 10px;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s;
     }
-    
-  .galeria-imagenes {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
 
-.galeria-imagenes img {
-  width: 30%; /* Ajusta el tamaño según sea necesario */
-  height: auto; /* Mantiene la proporción de la imagen */
-  margin: 0 5px; /* Espaciado entre imágenes */
-  border-radius: 5px; /* Bordes redondeados */
-}
+    .nav-links a:hover {
+      background-color: #e91e63;
+      color: white;
+    }
 
+    .galeria-imagenes {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .galeria-imagenes img {
+      width: 30%; /* Ajusta el tamaño según sea necesario */
+      height: auto; /* Mantiene la proporción de la imagen */
+      margin: 0 5px; /* Espaciado entre imágenes */
+      border-radius: 5px; /* Bordes redondeados */
+    }
   </style>
 </head>
 <body>
   <!-- Header -->
-  <header class="navbar">
-    <div class="logo">
-      <img src="logo.png" alt="Beauty Bliss Logo">
+  <header>
+    <div class="navbar-top">
+      <div class="logo">
+        <img src="logo.png" alt="Beauty Bliss Logo">
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Buscar productos...">
+      </div>
+      <div class="icons">
+        <a href="#" title="Carrito"><img src="icono-carrito.png" alt="Carrito"></a>
+        <a href="#" title="Favoritos"><img src="icono-favoritos.png" alt="Favoritos"></a>
+      </div>
     </div>
-    <div class="search-bar">
-      <input type="text" placeholder="Buscar productos...">
-    </div>
-    <nav class="nav-links">
+    <nav class="navbar-links">
       <a href="index.html">Inicio</a>
-      <a href="cabello.html">Cuidado del Cabello</a>
-      <a href="#" class="icons"><img src="icono-carrito.png" alt="Carrito"></a>
-      <a href="#" class="icons"><img src="icono-favoritos.png" alt="Favoritos"></a>
-      <a href="#" class="icons"><img src="icono-busqueda.png" alt="Buscar"></a>
+      <a href="cabello.html">Cabello</a>
+      <a href="cuidado de la piel.html">Rostro</a>
+      <a href="Labios.html">Labios</a>
+      <a href="uñas.html">Uñas</a>
     </nav>
   </header>
 
@@ -240,16 +269,16 @@
           <button>Agregar al carrito</button>
         </div>
     
-    <div class="producto">
-      <div class="galeria-imagenes">
-        <img src="cabello/PRO2994.jpg" alt="Lazos para el Cabello - Imagen 1">
-        <img src="cabello/PRO2994(1).jpg" alt="Lazos para el Cabello - Imagen 2">
-        <img src="cabello/PRO2994(2).jpg alt="Lazos para el Cabello - Imagen 3">
-      </div>
-      <h4>Lazos para el Cabello - Todo Moda</h4>
-      <p><span class="precio-original">S/ 11.00</span> <span class="precio-descuento">S/ 11.00</span></p>
-      <button>Agregar al carrito</button>
-    </div>
+        <div class="producto">
+          <div class="galeria-imagenes">
+            <img src="cabello/PRO2994.jpg" alt="Lazos para el Cabello - Imagen 1">
+            <img src="cabello/PRO2994(1).jpg" alt="Lazos para el Cabello - Imagen 2">
+            <img src="cabello/PRO2994(2).jpg" alt="Lazos para el Cabello - Imagen 3">
+          </div>
+          <h4>Lazos para el Cabello - Todo Moda</h4>
+          <p><span class="precio-original">S/ 11.00</span> <span class="precio-descuento">S/ 11.00</span></p>
+          <button>Agregar al carrito</button>
+        </div>
 
         <div class="producto">
           <img src="cabello/PRO1771.jpg" alt="Ganchitos de Colores">
