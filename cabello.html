@@ -36,8 +36,10 @@
 
     .grid-productos {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .producto {
@@ -92,7 +94,13 @@
       background-color: #c2185b;
     }
 
-    .navbar {
+    .header-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .header-top {
       display: flex;
       align-items: center;
       padding: 1rem;
@@ -100,13 +108,51 @@
       border-bottom: 1px solid #ddd;
     }
 
-    .navbar .logo {
+    .logo {
+      height: 50px;
       margin-right: 20px;
     }
 
     .search-bar {
       flex: 1;
       margin: 0 20px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .header-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .header-icons a {
+      color: #333;
+      font-size: 1.2rem;
+    }
+
+    .main-nav {
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+      background-color: #fff;
+      border-bottom: 1px solid #eee;
+    }
+
+    .main-nav a {
+      padding: 0.5rem 1rem;
+      margin: 0 10px;
+      color: #333;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .main-nav a:hover {
+      color: #e91e63;
     }
 
     .search-bar input {
@@ -140,6 +186,23 @@
       margin-bottom: 1rem;
     }
 
+    .carrito {
+      position: fixed;
+      right: 20px;
+      top: 80px;
+      width: 300px;
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 15px;
+      z-index: 999;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .carrito.oculto {
+      display: none;
+    }
+    
     .galeria-imagenes img {
       width: 30%; /* Ajusta el tamaño según sea necesario */
       height: auto; /* Mantiene la proporción de la imagen */
@@ -151,25 +214,25 @@
 <body>
   <!-- Header -->
   <header>
-    <div class="header-top">
-      <img src="logo.png" alt="Beauty Bliss Logo" class="logo">
-      <div class="search-bar">
-        <input type="text" placeholder="Buscar productos...">
+    <div class="header-container">
+      <div class="header-top">
+        <img src="logo.png" alt="Beauty Bliss Logo" class="logo">
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar productos...">
+        </div>
+        <div class="header-icons">
+          <a href="#" title="Favoritos"><i class="fas fa-heart"></i></a>
+          <a href="#" title="Carrito" id="abrir-carrito"><i class="fas fa-shopping-cart"></i></a>
+        </div>
       </div>
-      <div class="header-icons">
-        <a href="registro.html" title="Usuario"><i class="fas fa-user"></i></a>
-        <a href="#" title="Favoritos"><i class="fas fa-heart"></i></a>
-        <a href="#" title="Carrito"><i class="fas fa-shopping-cart"></i></a>
-        <a href="contacto.html" title="Contacto"><i class="fas fa-phone"></i></a>
-      </div>
+      <nav class="main-nav">
+        <a href="index.html">Inicio</a>
+        <a href="cuidado de la piel.html">Cuidado Facial</a>
+        <a href="cabello.html">Cabello</a>
+        <a href="Labios.html">Labios</a>
+        <a href="uñas.html">Uñas</a>
+      </nav>
     </div>
-    <nav class="main-nav">
-      <a href="index.html">Inicio</a>
-      <a href="cuidado de la piel.html">Cuidado Facial</a>
-      <a href="cabello.html">Cabello</a>
-      <a href="Labios.html">Labios</a>
-      <a href="uñas.html">Uñas</a>
-    </nav>
   </header>
 
   <!-- Contenido principal -->
@@ -204,7 +267,7 @@
           <img src="images/cabello/PRO1267.jpg" alt="Shampoo Cabello Ondulado">
           <h4>Shampoo Cabello Ondulado - TRESemme</h4>
           <p><span class="precio-original">S/ 25.00</span> <span class="precio-descuento">S/ 21.00</span></p>
-          <button>Agregar al carrito</button>
+          <button class="agregar-carrito" data-nombre="Shampoo Cabello Ondulado - TRESemme" data-precio="21.00">Agregar al carrito</button>
         </div>
 
         <div class="producto">
@@ -291,6 +354,14 @@
     </section>
   </main>
 
+  <div id="carrito" class="carrito oculto">
+    <h3>Tu carrito</h3>
+    <ul id="carrito-lista"></ul>
+    <p id="total">Total: $0.00</p>
+    <button onclick="window.location.href='checkout.html'">Finalizar Compra</button>
+    <button id="cerrar-carrito">Cerrar</button>
+  </div>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-section">
@@ -312,7 +383,6 @@
       <p>Políticas de Privacidad</p>
     </div>
   </footer>
+<script src="script.js"></script>
 </body>
 </html>
-
-  
