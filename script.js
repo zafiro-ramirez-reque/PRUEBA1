@@ -1,11 +1,11 @@
-// Carrito funcional mejorado con persistencia localStorage y favoritos
+// Carrito funcional mejorado para ambas páginas
 document.addEventListener('DOMContentLoaded', function() {
-    const productos = document.querySelectorAll(".producto");
+    // Selectores comunes
     const carritoLista = document.getElementById("carrito-lista");
     const totalElemento = document.getElementById("total");
     const carrito = document.getElementById("carrito");
     const cerrarCarrito = document.getElementById("cerrar-carrito");
-    const botonCarrito = document.querySelector('.icons a[title="Carrito"]');
+    const botonCarrito = document.querySelector('.icons a[title="Carrito"], .icons a[title="Carrito de compras"]');
     const botonFavoritos = document.querySelector('.icons a[title="Favoritos"]');
     const favoritosContenedor = document.getElementById("favoritos");
     const cerrarFavoritos = document.getElementById("cerrar-favoritos");
@@ -13,17 +13,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const buscador = document.getElementById("buscador");
     const filtros = document.querySelectorAll('.filtros input[type="checkbox"]');
 
+    // Elementos que pueden variar entre páginas
+    const productos = document.querySelectorAll(".producto");
+    const btnAgregarCarritos = document.querySelectorAll(".agregar-carrito, .producto > button");
+
     let carritoItems = [];
     let favoritos = [];
 
-    // Cargar desde localStorage al iniciar
-    cargarDatos();
+    // Inicialización
+    init();
 
-    // Configurar event listeners para productos
-    configurarProductos();
-
-    // Configurar otros event listeners
-    configurarEventListeners();
+    function init() {
+        cargarDatos();
+        configurarEventosProductos();
+        configurarEventListenersGlobales();
+    }
 
     function cargarDatos() {
         const datosGuardados = localStorage.getItem("carrito");
@@ -40,31 +44,42 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function configurarProductos() {
-        productos.forEach(producto => {
-            const btnCarrito = producto.querySelector(".agregar-carrito");
-            const btnFavorito = producto.querySelector(".agregar-favorito");
+    function configurarEventosProductos() {
+        // Para productos en cabello.html (con clase agregar-carrito)
+        document.querySelectorAll(".agregar-carrito").forEach(btn => {
+            btn.addEventListener("click", agregarProductoAlCarrito);
+        });
 
-            if (btnCarrito) {
-                btnCarrito.addEventListener("click", function() {
-                    agregarAlCarrito(producto, btnCarrito);
-                });
+        // Para productos en index.html (button directo)
+        document.querySelectorAll(".producto > button").forEach(btn => {
+            if (!btn.classList.contains("agregar-carrito") && 
+                !btn.classList.contains("agregar-favorito")) {
+                btn.addEventListener("click", agregarProductoAlCarrito);
             }
+        });
 
-            if (btnFavorito) {
-                btnFavorito.addEventListener("click", function() {
-                    toggleFavorito(producto, btnFavorito);
-                });
-            }
+        // Eventos para favoritos
+        document.querySelectorAll(".agregar-favorito").forEach(btn => {
+            btn.addEventListener("click", toggleFavorito);
         });
     }
 
-    function agregarAlCarrito(producto, btn) {
-        const nombre = obtenerNombreProducto(producto, btn);
-        const precio = obtenerPrecioProducto(producto, btn);
+    function agregarProductoAlCarrito(e) {
+        const btn = e.currentTarget;
+        const producto = btn.closest(".producto");
+        
+        const nombre = btn.dataset.nombre || 
+                      producto.dataset.nombre || 
+                      producto.querySelector("h4, p")?.textContent?.split("-")[0]?.trim();
+        
+        const precioText = btn.dataset.precio || 
+                         producto.dataset.precio || 
+                         producto.querySelector("p")?.textContent?.match(/\d+\.?\d*/);
+        
+        const precio = parseFloat(precioText);
 
         if (!nombre || isNaN(precio)) {
-            alert("Error: no se pudo identificar el producto.");
+            console.error("No se pudo identificar el producto:", {nombre, precio});
             return;
         }
 
@@ -77,20 +92,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
         guardarCarrito();
         actualizarCarrito();
-        carrito.classList.remove("oculto");
+        if (carrito) carrito.classList.remove("oculto");
     }
 
-    function toggleFavorito(producto, btn) {
-        const nombre = obtenerNombreProducto(producto, btn);
-        const precio = obtenerPrecioProducto(producto, btn);
+    function toggleFavorito(e) {
+        const btn = e.currentTarget;
+        const producto = btn.closest(".producto");
+        
+        const nombre = btn.dataset.nombre || 
+                      producto.dataset.nombre || 
+                      producto.querySelector("h4, p")?.textContent?.split("-")[0]?.trim();
+        
+        const precioText = btn.dataset.precio || 
+                         producto.dataset.precio || 
+                         producto.querySelector("p")?.textContent?.match(/\d+\.?\d*/);
+        
+        const precio = parseFloat(precioText);
 
         if (!nombre || isNaN(precio)) {
-            alert("Error al agregar a favoritos: datos incompletos.");
+            console.error("Datos incompletos para favorito:", {nombre, precio});
             return;
         }
 
         const existente = favoritos.find(p => p.nombre === nombre);
-
         if (existente) {
             favoritos = favoritos.filter(p => p.nombre !== nombre);
             btn.classList.remove("favorito");
@@ -103,19 +127,16 @@ document.addEventListener('DOMContentLoaded', function() {
         actualizarFavoritos();
     }
 
-    function obtenerNombreProducto(producto, btn) {
-        return btn.dataset.nombre || producto.dataset.nombre || producto.querySelector("h4")?.textContent.trim();
-    }
-
-    function obtenerPrecioProducto(producto, btn) {
-        return parseFloat(btn.dataset.precio) || parseFloat(producto.dataset.precio);
-    }
-
     function marcarFavoritosEnProductos() {
-        productos.forEach(producto => {
-            const nombre = obtenerNombreProducto(producto);
-            const btn = producto.querySelector(".agregar-favorito");
-            if (!btn || !nombre) return;
+        document.querySelectorAll(".agregar-favorito").forEach(btn => {
+            const producto = btn.closest(".producto");
+            if (!producto) return;
+            
+            const nombre = btn.dataset.nombre || 
+                          producto.dataset.nombre || 
+                          producto.querySelector("h4, p")?.textContent?.split("-")[0]?.trim();
+            
+            if (!nombre) return;
 
             if (favoritos.some(fav => fav.nombre === nombre)) {
                 btn.classList.add("favorito");
@@ -125,18 +146,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function configurarEventListeners() {
+    function configurarEventListenersGlobales() {
         // Carrito
         if (botonCarrito) {
             botonCarrito.addEventListener("click", (e) => {
                 e.preventDefault();
-                carrito.classList.toggle("oculto");
+                if (carrito) carrito.classList.toggle("oculto");
             });
         }
 
         if (cerrarCarrito) {
             cerrarCarrito.addEventListener("click", () => {
-                carrito.classList.add("oculto");
+                if (carrito) carrito.classList.add("oculto");
             });
         }
 
@@ -144,13 +165,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (botonFavoritos) {
             botonFavoritos.addEventListener("click", (e) => {
                 e.preventDefault();
-                favoritosContenedor.classList.toggle("oculto");
+                if (favoritosContenedor) favoritosContenedor.classList.toggle("oculto");
             });
         }
 
         if (cerrarFavoritos) {
             cerrarFavoritos.addEventListener("click", () => {
-                favoritosContenedor.classList.add("oculto");
+                if (favoritosContenedor) favoritosContenedor.classList.add("oculto");
             });
         }
 
@@ -158,36 +179,42 @@ document.addEventListener('DOMContentLoaded', function() {
         if (buscador) {
             buscador.addEventListener("input", () => {
                 const texto = buscador.value.toLowerCase();
-                productos.forEach(producto => {
-                    const nombre = producto.dataset.nombre?.toLowerCase() || "";
-                    producto.style.display = nombre.includes(texto) ? "block" : "none";
+                document.querySelectorAll(".producto").forEach(producto => {
+                    const nombre = producto.dataset.nombre?.toLowerCase() || 
+                                 producto.querySelector("h4, p")?.textContent?.toLowerCase() || "";
+                    producto.style.display = nombre.includes(texto) ? "" : "none";
                 });
             });
         }
 
         // Filtros
-        filtros.forEach(filtro => {
-            filtro.addEventListener("change", aplicarFiltros);
-        });
+        if (filtros.length > 0) {
+            filtros.forEach(filtro => {
+                filtro.addEventListener("change", aplicarFiltros);
+            });
+        }
     }
 
     function aplicarFiltros() {
         const marcasSeleccionadas = [...document.querySelectorAll('input[name="marca"]:checked')].map(el => el.value);
         const preciosSeleccionados = [...document.querySelectorAll('input[name="precio"]:checked')].map(el => el.value);
 
-        productos.forEach(producto => {
+        document.querySelectorAll(".producto").forEach(producto => {
             const marca = producto.dataset.marca;
-            const precio = parseFloat(producto.dataset.precio);
+            const precioText = producto.dataset.precio || 
+                             producto.querySelector("p")?.textContent?.match(/\d+\.?\d*/);
+            const precio = parseFloat(precioText);
 
             const pasaMarca = marcasSeleccionadas.length === 0 || marcasSeleccionadas.includes(marca);
             const pasaPrecio = preciosSeleccionados.length === 0 ||
                 (preciosSeleccionados.includes("menor-20") && precio < 20) ||
                 (preciosSeleccionados.includes("mayor-20") && precio >= 20);
 
-            producto.style.display = (pasaMarca && pasaPrecio) ? "block" : "none";
+            producto.style.display = (pasaMarca && pasaPrecio) ? "" : "none";
         });
     }
 
+    // Funciones de actualización
     function actualizarCarrito() {
         if (!carritoLista) return;
 
@@ -195,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (carritoItems.length === 0) {
             carritoLista.innerHTML = "<li>Carrito vacío</li>";
-            totalElemento.textContent = "Total: $0.00";
+            if (totalElemento) totalElemento.textContent = "Total: $0.00";
             return;
         }
 
@@ -203,24 +230,32 @@ document.addEventListener('DOMContentLoaded', function() {
             const li = document.createElement("li");
             li.innerHTML = `
                 ${item.nombre} - $${item.precio.toFixed(2)} x 
-                <button class="cantidad-btn" onclick="cambiarCantidad(${index}, -1)">-</button>
+                <button class="cantidad-btn" data-index="${index}" data-change="-1">-</button>
                 ${item.cantidad}
-                <button class="cantidad-btn" onclick="cambiarCantidad(${index}, 1)">+</button>
-                <button class="eliminar-btn" onclick="eliminarItem(${index})">✕</button>
+                <button class="cantidad-btn" data-index="${index}" data-change="1">+</button>
+                <button class="eliminar-btn" data-index="${index}">✕</button>
             `;
             carritoLista.appendChild(li);
         });
 
+        // Agregar eventos a los nuevos botones
+        carritoLista.querySelectorAll(".cantidad-btn").forEach(btn => {
+            btn.addEventListener("click", function() {
+                const index = parseInt(this.dataset.index);
+                const change = parseInt(this.dataset.change);
+                cambiarCantidad(index, change);
+            });
+        });
+
+        carritoLista.querySelectorAll(".eliminar-btn").forEach(btn => {
+            btn.addEventListener("click", function() {
+                const index = parseInt(this.dataset.index);
+                eliminarItem(index);
+            });
+        });
+
         const total = carritoItems.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
-        totalElemento.textContent = `Total: $${total.toFixed(2)}`;
-    }
-
-    function guardarCarrito() {
-        localStorage.setItem("carrito", JSON.stringify(carritoItems));
-    }
-
-    function guardarFavoritos() {
-        localStorage.setItem("favoritos", JSON.stringify(favoritos));
+        if (totalElemento) totalElemento.textContent = `Total: $${total.toFixed(2)}`;
     }
 
     function actualizarFavoritos() {
@@ -231,19 +266,59 @@ document.addEventListener('DOMContentLoaded', function() {
             favoritosLista.innerHTML = "<li>No tienes productos favoritos.</li>";
             return;
         }
+
         favoritos.forEach((item, index) => {
             const li = document.createElement("li");
             li.innerHTML = `
                 ${item.nombre} - $${item.precio.toFixed(2)}
-                <button onclick="agregarFavoritoAlCarrito(${index})">🛒</button>
-                <button onclick="eliminarFavorito(${index})">✕</button>
+                <button class="agregar-favorito-carrito" data-index="${index}">🛒</button>
+                <button class="eliminar-favorito-btn" data-index="${index}">✕</button>
             `;
             favoritosLista.appendChild(li);
         });
+
+        // Agregar eventos a los nuevos botones
+        favoritosLista.querySelectorAll(".agregar-favorito-carrito").forEach(btn => {
+            btn.addEventListener("click", function() {
+                const index = parseInt(this.dataset.index);
+                agregarFavoritoAlCarrito(index);
+            });
+        });
+
+        favoritosLista.querySelectorAll(".eliminar-favorito-btn").forEach(btn => {
+            btn.addEventListener("click", function() {
+                const index = parseInt(this.dataset.index);
+                eliminarFavorito(index);
+            });
+        });
     }
 
-    // Funciones globales
-    window.agregarFavoritoAlCarrito = function(index) {
+    // Funciones de guardado
+    function guardarCarrito() {
+        localStorage.setItem("carrito", JSON.stringify(carritoItems));
+    }
+
+    function guardarFavoritos() {
+        localStorage.setItem("favoritos", JSON.stringify(favoritos));
+    }
+
+    // Funciones de manipulación
+    function cambiarCantidad(index, cambio) {
+        carritoItems[index].cantidad += cambio;
+        if (carritoItems[index].cantidad <= 0) {
+            carritoItems.splice(index, 1);
+        }
+        guardarCarrito();
+        actualizarCarrito();
+    }
+
+    function eliminarItem(index) {
+        carritoItems.splice(index, 1);
+        guardarCarrito();
+        actualizarCarrito();
+    }
+
+    function agregarFavoritoAlCarrito(index) {
         const item = favoritos[index];
         const existente = carritoItems.find(p => p.nombre === item.nombre);
         if (existente) {
@@ -253,26 +328,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         guardarCarrito();
         actualizarCarrito();
-        carrito.classList.remove("oculto");
-    };
+        if (carrito) carrito.classList.remove("oculto");
+    }
 
-    window.eliminarFavorito = function(index) {
+    function eliminarFavorito(index) {
         favoritos.splice(index, 1);
         guardarFavoritos();
         actualizarFavoritos();
         marcarFavoritosEnProductos();
-    };
+    }
 
-    window.cambiarCantidad = function(index, cambio) {
-        carritoItems[index].cantidad += cambio;
-        if (carritoItems[index].cantidad <= 0) {
-            carritoItems.splice(index, 1);
-        }
-        actualizarCarrito();
-    };
-
-    window.eliminarItem = function(index) {
-        carritoItems.splice(index, 1);
-        actualizarCarrito();
-    };
+    // Hacer funciones accesibles globalmente
+    window.cambiarCantidad = cambiarCantidad;
+    window.eliminarItem = eliminarItem;
+    window.agregarFavoritoAlCarrito = agregarFavoritoAlCarrito;
+    window.eliminarFavorito = eliminarFavorito;
 });
