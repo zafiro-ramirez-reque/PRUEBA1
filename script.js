@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
         carritoItems.forEach((item, index) => {
             const li = document.createElement("li");
             li.innerHTML = `
-                ${item.nombre} - $${item.precio.toFixed(2)} x 
+                ${item.nombre} - $${item.precio.toFixed(2)} 
                 <button class="cantidad-btn" data-index="${index}" data-change="-1">-</button>
                 ${item.cantidad}
                 <button class="cantidad-btn" data-index="${index}" data-change="1">+</button>
