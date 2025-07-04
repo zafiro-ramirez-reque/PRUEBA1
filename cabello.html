@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cuidado de Labios - Beauty Bliss</title>
+  <title>Cuidado del Cabello - Beauty Bliss</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Same styles as the Cabello page */
     .contenedor-productos {
       display: flex;
       padding: 2rem;
@@ -156,6 +155,13 @@
       color: #e91e63;
     }
 
+    .search-bar input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
     .nav-links {
       display: flex;
       gap: 15px;
@@ -174,6 +180,12 @@
       color: white;
     }
 
+    .galeria-imagenes {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
     .carrito {
       position: fixed;
       right: 20px;
@@ -190,11 +202,83 @@
     .carrito.oculto {
       display: none;
     }
+    
+    .galeria-imagenes img {
+      width: 30%; /* Ajusta el tamaño según sea necesario */
+      height: auto; /* Mantiene la proporción de la imagen */
+      margin: 0 5px; /* Espaciado entre imágenes */
+      border-radius: 5px; /* Bordes redondeados */
+    }
+
+      .cabecera {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+  display: block; /* asegura que los bloques estén uno debajo del otro */
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.logo {
+  height: 50px;
+}
+
+.buscador-header {
+  flex: 1;
+  margin: 0 2rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 1rem;
+}
+
+.icons a {
+  color: #555;
+  font-size: 1.3rem;
+  margin-left: 15px;
+  transition: color 0.3s;
+}
+
+.icons a:hover {
+  color: #e91e63;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 0.5rem 0;
+}
+
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background-color: #e91e63;
+  color: white;
+}
   </style>
 </head>
 <body>
 
 <header class="cabecera">
+  <!-- Parte superior: logo, buscador, íconos -->
   <div class="header-top">
     <img src="logo.png" alt="Beauty Bliss Logo" class="logo">
     <input type="text" id="buscador" class="buscador-header" placeholder="Buscar productos...">
@@ -206,28 +290,35 @@
     </div>
   </div>
 
+  <!-- Barra de navegación debajo -->
   <nav class="main-nav">
     <div class="nav-links">
       <a href="index.html">Inicio</a>
       <a href="cuidado de la piel.html">Cuidado Facial</a>
-      <a href="cabello.html">Cabello</a>
-      <a href="Labios.html" class="active">Labios</a>
+      <a href="cabello.html" class="active">Cabello</a>
+      <a href="Labios.html">Labios</a>
       <a href="uñas.html">Uñas</a>
     </div>
   </nav>
 </header>
 
+
+
+
 <main class="contenedor-productos">
     <aside class="filtros">
       <h3>Filtros</h3>
       <label>
-        <input type="checkbox" name="marca" value="Maybelline"> Maybelline
+        <input type="checkbox" name="marca" value="TRESemme"> TRESemme
       </label>
       <label>
-        <input type="checkbox" name="marca" value="NYX"> NYX
+        <input type="checkbox" name="marca" value="Pantene"> Pantene
       </label>
       <label>
         <input type="checkbox" name="marca" value="Loreal"> Loreal
+      </label>
+      <label>
+        <input type="checkbox" name="marca" value="Herbal Essences"> Herbal Essences
       </label>
       <h4>Precio</h4>
       <label>
@@ -239,117 +330,178 @@
     </aside>
   
 <section class="productos">
-  <h1>Cuidado de Labios</h1>
+  <h1>Cuidado del Cabello</h1>
   <div class="grid-productos">
-    <div class="producto" data-marca="Maybelline" data-precio="25">
-      <img src="labios/PRO1650.jpg" alt="Labial Rojo Intenso">
-      <h4>Labial Rojo Intenso - Maybelline</h4>
-      <p><span class="precio-original">S/ 30.00</span> <span class="precio-descuento">S/ 25.00</span></p>
+    <div class="producto" data-marca="TRESemme" data-precio="21">
+      <img src="cabello/PRO1267.jpg" alt="Shampoo Cabello Ondulado">
+      <h4>Shampoo Cabello Ondulado - TRESemme</h4>
+      <p><span class="precio-original">S/ 25.00</span> <span class="precio-descuento">S/ 21.00</span></p>
       <div class="acciones-producto">
-        <button class="agregar-carrito" data-nombre="Labial Rojo Intenso - Maybelline" data-precio="25.00">Agregar al carrito</button>
+        <button class="agregar-carrito" data-nombre="Shampoo Cabello Ondulado - TRESemme" data-precio="21.00">Agregar al carrito</button>
         <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
       </div>
     </div>
 
-    <div class="producto" data-marca="Maybelline" data-precio="18">
-      <img src="labios/PRO6377.jpg" alt="Labial Rojo Cereza">
-      <h4>Labial Rojo Cereza - Maybelline</h4>
-      <p><span class="precio-descuento">S/ 18.00</span></p>
+    <div class="producto" data-marca="TRESemme" data-precio="21.90">
+      <img src="cabello/PRO3790.jpg" alt="Acondicionador Cabello Ondulado">
+      <h4>Acondicionador Cabello Ondulado - TRESemme</h4>
+      <p><span class="precio-original">S/ 23.90</span> <span class="precio-descuento">S/ 21.90</span></p>
       <div class="acciones-producto">
-        <button class="agregar-carrito" data-nombre="Labial Rojo Cereza - Maybelline" data-precio="18.00">Agregar al carrito</button>
+        <button class="agregar-carrito" data-nombre="Acondicionador Cabello Ondulado - TRESemme" data-precio="21.90">Agregar al carrito</button>
         <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
       </div>
     </div>
 
-    <div class="producto" data-marca="Maybelline" data-precio="19">
-      <img src="labios/PRO9974.jpg" alt="Labial Rojo Oscuro">
-      <h4>Labial Rojo Oscuro - Maybelline</h4>
-      <p><span class="precio-original">S/ 25.00</span> <span class="precio-descuento">S/ 19.00</span></p>
+    <div class="producto" data-marca="Pantene" data-precio="20">
+      <img src="cabello/PRO8371.jpg" alt="Shampoo Cabello Liso">
+      <h4>Shampoo Cabello Liso - Pantene PRO-V</h4>
+      <p><span class="precio-descuento">S/ 20.00</span></p>
       <div class="acciones-producto">
-        <button class="agregar-carrito" data-nombre="Labial Rojo Oscuro - Maybelline" data-precio="19.00">Agregar al carrito</button>
+        <button class="agregar-carrito" data-nombre="Shampoo Cabello Liso - Pantene PRO-V" data-precio="20.00">Agregar al carrito</button>
         <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
       </div>
     </div>
 
-    <div class="producto" data-marca="NYX" data-precio="17">
-      <img src="labios/PRO2354.jpg" alt="Brillo Labial Rosa">
-      <h4>Brillo Labial Rosa - NYX</h4>
-      <p><span class="precio-descuento">S/ 17.00</span></p>
+    <div class="producto" data-marca="Pantene" data-precio="22.90">
+      <img src="cabello/PRO4628.jpg" alt="Acondicionador Cabello Lacio">
+      <h4>Acondicionador Cabello Lacio - Pantene</h4>
+      <p><span class="precio-original">S/ 25.00</span> <span class="precio-descuento">S/ 22.90</span></p>
       <div class="acciones-producto">
-        <button class="agregar-carrito" data-nombre="Brillo Labial Rosa - NYX" data-precio="17.00">Agregar al carrito</button>
+        <button class="agregar-carrito" data-nombre="Acondicionador Cabello Lacio - Pantene" data-precio="22.90">Agregar al carrito</button>
         <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
       </div>
     </div>
 
-    <div class="producto" data-marca="NYX" data-precio="13">
-      <img src="labios/PRO4567.jpg" alt="Brillo Labial Transparente">
-      <h4>Brillo Labial Transparente - NYX</h4>
-      <p><span class="precio-original">S/ 15.00</span> <span class="precio-descuento">S/ 13.00</span></p>
+    <div class="producto" data-marca="Pantene" data-precio="22.50">
+      <img src="cabello/PRO7183.jpg" alt="Acondicionador Cabello Rizado">
+      <h4>Acondicionador Cabello Rizado - Pantene</h4>
+      <p><span class="precio-original">S/ 25.00</span> <span class="precio-descuento">S/ 22.50</span></p>
       <div class="acciones-producto">
-        <button class="agregar-carrito" data-nombre="Brillo Labial Transparente - NYX" data-precio="13.00">Agregar al carrito</button>
+        <button class="agregar-carrito" data-nombre="Acondicionador Cabello Rizado - Pantene" data-precio="22.50">Agregar al carrito</button>
         <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
       </div>
     </div>
 
-    <div class="producto" data-marca="Loreal" data-precio="21">
-      <img src="labios/PRO9210.jpg" alt="Labial Liquido Mate Rojo">
-      <h4>Labial Liquido Mate Rojo - Loreal</h4>
+    <div class="producto" data-marca="Herbal Essences" data-precio="25">
+      <img src="cabello/PRO3889.jpg" alt="Crema Para Peinar Rizos">
+      <h4>Crema Para Peinar Rizos - Herbal Essences</h4>
+      <p><span class="precio-original">S/ 28.00</span> <span class="precio-descuento">S/ 25</span></p>
+      <div class="acciones-producto">
+        <button class="agregar-carrito" data-nombre="Crema Para Peinar Rizos - Herbal Essences" data-precio="25.00">Agregar al carrito</button>
+        <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
+      </div>
+    </div>
+
+    <div class="producto" data-marca="Garnier" data-precio="28">
+      <img src="cabello/PRO8093.jpg" alt="Serum Alisador">
+      <h4>Serum Alisador - Garnier</h4>
+      <p><span class="precio-descuento">S/ 28.00</span></p>
+      <div class="acciones-producto">
+        <button class="agregar-carrito" data-nombre="Serum Alisador - Garnier" data-precio="28.00">Agregar al carrito</button>
+        <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
+      </div>
+    </div>
+
+    <div class="producto" data-marca="Garnier" data-precio="26">
+      <img src="cabello/PRO5112.jpg" alt="Mascarilla Hidratante Rulos">
+      <h4>Mascarilla Hidratante Rulos - Garnier</h4>
+      <p><span class="precio-original">S/ 30.00</span> <span class="precio-descuento">S/ 26.00</span></p>
+      <div class="acciones-producto">
+        <button class="agregar-carrito" data-nombre="Mascarilla Hidratante Rulos - Garnier" data-precio="26.00">Agregar al carrito</button>
+        <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
+      </div>
+    </div>
+
+    <div class="producto" data-marca="Todo Moda" data-precio="12">
+      <img src="cabello/PRO9036.jpg" alt="Vinchas">
+      <h4>Vinchas de Colores pasteles - Todo Moda</h4>
+      <p><span class="precio-descuento">S/ 12.00</span></p>
+      <div class="acciones-producto">
+        <button class="agregar-carrito" data-nombre="Vinchas de Colores pasteles - Todo Moda" data-precio="12.00">Agregar al carrito</button>
+        <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
+      </div>
+    </div>
+
+    <div class="producto" data-marca="Pantene" data-precio="21">
+      <img src="cabello/PRO9042.jpg" alt="Shampoo Cabello Rizo">
+      <h4>Shampoo Cabello Rizo - Pantene</h4>
       <p><span class="precio-descuento">S/ 21.00</span></p>
       <div class="acciones-producto">
-        <button class="agregar-carrito" data-nombre="Labial Liquido Mate Rojo - Loreal" data-precio="21.00">Agregar al carrito</button>
+        <button class="agregar-carrito" data-nombre="Shampoo Cabello Rizo - Pantene" data-precio="21.00">Agregar al carrito</button>
         <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
       </div>
     </div>
 
-    <div class="producto" data-marca="Loreal" data-precio="21">
-      <img src="labios/PRO6823.jpg" alt="Labial Liquido Mate Nude">
-      <h4>Labial Liquido Mate Nude - Loreal</h4>
-      <p><span class="precio-descuento">S/ 21.00</span></p>
+    <div class="producto" data-marca="Todo Moda" data-precio="11">
+      <div class="galeria-imagenes">
+        <img src="cabello/PRO2994.jpg" alt="Lazo 1">
+        <img src="cabello/PRO2994 (2).jpg" alt="Lazo 2">
+        <img src="cabello/PRO2994 (3).jpg" alt="Lazo 3">
+      </div>
+      <h4>Lazos para el Cabello - Todo Moda</h4>
+      <label for="modelo-lazo">Elige el modelo:</label>
+      <select class="opcion-lazo">
+        <option value="Lazo 1">Modelo 1</option>
+        <option value="Lazo 2">Modelo 2</option>
+        <option value="Lazo 3">Modelo 3</option>
+      </select>
+      <p><span class="precio-original">S/ 11.00</span> <span class="precio-descuento">S/ 11.00</span></p>
       <div class="acciones-producto">
-        <button class="agregar-carrito" data-nombre="Labial Liquido Mate Nude - Loreal" data-precio="21.00">Agregar al carrito</button>
+        <button class="agregar-carrito" data-nombre="Lazos para el Cabello - Todo Moda" data-precio="11.00">Agregar al carrito</button>
+        <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
+      </div>
+    </div>
+
+    <div class="producto" data-marca="Todo Moda" data-precio="10">
+      <img src="cabello/PRO1771.jpg" alt="Ganchitos de Colores">
+      <h4>Ganchitos de Colores - Todo Moda</h4>
+      <p><span class="precio-original">S/ 10.00</span> <span class="precio-descuento">S/ 10.00</span></p>
+      <div class="acciones-producto">
+        <button class="agregar-carrito" data-nombre="Ganchitos de Colores - Todo Moda" data-precio="10.00">Agregar al carrito</button>
         <button class="agregar-favorito" title="Agregar a favoritos"><i class="fas fa-heart"></i></button>
       </div>
     </div>
   </div>
 </section>
 
-</main>
+  </main>
+  
+  <div id="carrito" class="carrito oculto">
+    <h3>Tu carrito</h3>
+    <ul id="carrito-lista"></ul>
+    <p id="total">Total: $0.00</p>
+    <button onclick="window.location.href='checkout.html'">Finalizar Compra</button>
+    <button id="cerrar-carrito">Cerrar</button>
+  </div>
 
-<div id="carrito" class="carrito oculto">
-  <h3>Tu carrito</h3>
-  <ul id="carrito-lista"></ul>
-  <p id="total">Total: $0.00</p>
-  <button onclick="window.location.href='checkout.html'">Finalizar Compra</button>
-  <button id="cerrar-carrito">Cerrar</button>
-</div>
-
-<div id="favoritos" class="carrito oculto">
+  <div id="favoritos" class="carrito oculto">
   <h3>Favoritos</h3>
   <ul id="favoritos-lista"></ul>
   <button id="cerrar-favoritos">Cerrar</button>
 </div>
 
-<footer>
-    <div class="footer-col">
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-section">
       <h4>Sobre Beauty Bliss</h4>
-      <a href="Sobre-nosotros.html">Quienes somos</a>
-      <a href="compromiso.html">Nuestro compromiso</a>
+      <p>Salud y Cuidado</p>
+      <p>Sustentabilidad</p>
+      <p>Nuestro Compromiso</p>
     </div>
-    <div class="footer-col">
-      <h4>Ayuda</h4>
-      <a href="terminos.html">Términos y condiciones</a>
-      <a href="eliminacion_datos.html">Políticas de cookies</a>
-      <a href="politicas.html">Políticas de privacidad</a>
+    <div class="footer-section">
+      <h4>AYUDA</h4>
+      <p>Encuentra Beauty Bliss</p>
+      <p>Ayuda y Contacto</p>
+      <p>Libro de Reclamaciones</p>
     </div>
-    <div class="footer-col">
-      <h4>Soporte</h4>
-      <a href="contacto.html">Ayuda y contacto</a>
-      <a href="reclamaciones.html">Libro de reclamaciones</a>
+    <div class="footer-section">
+      <h4>SOPORTE</h4>
+      <p>Términos y Condiciones</p>
+      <p>Políticas de Cookies</p>
+      <p>Políticas de Privacidad</p>
     </div>
-    <div class="copyright">
-      © 2025 Beauty Bliss. Todos los derechos reservados.
-    </div>
-</footer>
+  </footer>
 <script src="script.js"></script>
 </body>
 </html>
